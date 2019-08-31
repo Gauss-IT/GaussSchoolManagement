@@ -1,10 +1,7 @@
-namespace GaussSchoolManagement
-{
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+using System.Data.Entity;
 
+namespace GaussSchoolManagement.DataModel
+{
     public partial class GaussSchoolModel : DbContext
     {
         public GaussSchoolModel()
