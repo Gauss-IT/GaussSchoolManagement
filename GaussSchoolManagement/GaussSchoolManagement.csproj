@@ -79,6 +79,18 @@
     <Compile Include="DataModel\Pagesa.cs" />
     <Compile Include="DataModel\Persona.cs" />
     <Compile Include="DataModel\Prinder.cs" />
+    <Compile Include="Forms\InstructorsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorsList.Designer.cs">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ParentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParentsList.Designer.cs">
+      <DependentUpon>ParentsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PaymentList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,18 @@
     </Compile>
     <Compile Include="Forms\PeopleList.Designer.cs">
       <DependentUpon>PeopleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServicesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServicesList.Designer.cs">
+      <DependentUpon>ServicesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StudentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentsList.Designer.cs">
+      <DependentUpon>StudentsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Forms\SchoolsList.cs">
@@ -108,6 +132,12 @@
     <EmbeddedResource Include="Forms\EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstructorsList.resx">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParentsList.resx">
+      <DependentUpon>ParentsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PaymentList.resx">
       <DependentUpon>PaymentList.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SchoolsList.resx">
       <DependentUpon>SchoolsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServicesList.resx">
+      <DependentUpon>ServicesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentsList.resx">
+      <DependentUpon>StudentsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,10 +163,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Instruktore.datasource" />
     <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Kurse.datasource" />
     <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Nxene.datasource" />
     <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Pagesa.datasource" />
     <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Persona.datasource" />
+    <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Prinder.datasource" />
+    <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Sherbimet.datasource" />
     <None Include="Properties\DataSources\GaussSchoolManagement.DataModel.Shkolla.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
