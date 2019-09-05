@@ -36,6 +36,7 @@
             this.btnEditParents = new System.Windows.Forms.Button();
             this.btnEditStudents = new System.Windows.Forms.Button();
             this.btnEditInstructors = new System.Windows.Forms.Button();
+            this.btnInstructorsCourses = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEditSchools
@@ -118,6 +119,16 @@
             this.btnEditInstructors.UseVisualStyleBackColor = true;
             this.btnEditInstructors.Click += new System.EventHandler(this.btnEditInstructors_Click);
             // 
+            // btnInstructorsCourses
+            // 
+            this.btnInstructorsCourses.Location = new System.Drawing.Point(302, 163);
+            this.btnInstructorsCourses.Name = "btnInstructorsCourses";
+            this.btnInstructorsCourses.Size = new System.Drawing.Size(114, 65);
+            this.btnInstructorsCourses.TabIndex = 1;
+            this.btnInstructorsCourses.Text = "Instructors Courses";
+            this.btnInstructorsCourses.UseVisualStyleBackColor = true;
+            this.btnInstructorsCourses.Click += new System.EventHandler(this.BtnInstructorsCourses_Click);
+            // 
             // EntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +141,7 @@
             this.Controls.Add(this.btnEditPayments);
             this.Controls.Add(this.btnEditCourse);
             this.Controls.Add(this.btnEditPeople);
+            this.Controls.Add(this.btnInstructorsCourses);
             this.Controls.Add(this.btnEditSchools);
             this.Name = "EntryForm";
             this.Text = "Gauss School Management";
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Button btnEditParents;
         private System.Windows.Forms.Button btnEditStudents;
         private System.Windows.Forms.Button btnEditInstructors;
+        private System.Windows.Forms.Button btnInstructorsCourses;
     }
 }
 

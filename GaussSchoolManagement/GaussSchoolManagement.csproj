@@ -79,6 +79,12 @@
     <Compile Include="DataModel\Pagesa.cs" />
     <Compile Include="DataModel\Persona.cs" />
     <Compile Include="DataModel\Prinder.cs" />
+    <Compile Include="Forms\InstructorsCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorsCourses.Designer.cs">
+      <DependentUpon>InstructorsCourses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InstructorsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstructorsCourses.resx">
+      <DependentUpon>InstructorsCourses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstructorsList.resx">
       <DependentUpon>InstructorsList.cs</DependentUpon>
