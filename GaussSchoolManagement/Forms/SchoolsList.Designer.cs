@@ -47,7 +47,7 @@
             this.shkollaEmriDataGridViewTextBoxColumn,
             this.shkollaTipiDataGridViewTextBoxColumn});
             this.dtgShoolsDataGrid.DataSource = this.shkollaBindingSource;
-            this.dtgShoolsDataGrid.Location = new System.Drawing.Point(66, 182);
+            this.dtgShoolsDataGrid.Location = new System.Drawing.Point(74, 32);
             this.dtgShoolsDataGrid.Name = "dtgShoolsDataGrid";
             this.dtgShoolsDataGrid.Size = new System.Drawing.Size(444, 150);
             this.dtgShoolsDataGrid.TabIndex = 0;

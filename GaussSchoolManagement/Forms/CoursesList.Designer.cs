@@ -30,34 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgCoursesDatagrid = new System.Windows.Forms.DataGridView();
-            this.btnSaveCourses = new System.Windows.Forms.Button();
             this.kurseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kursIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shifraKursitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emriKursitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pershkrimiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.niveliDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vitiShkollorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSaveCourses = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgCoursesDatagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kurseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgCoursesDatagrid
             // 
-            this.dtgCoursesDatagrid.AutoGenerateColumns = false;
             this.dtgCoursesDatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgCoursesDatagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.kursIdDataGridViewTextBoxColumn,
-            this.shifraKursitDataGridViewTextBoxColumn,
-            this.emriKursitDataGridViewTextBoxColumn,
-            this.pershkrimiDataGridViewTextBoxColumn,
-            this.niveliDataGridViewTextBoxColumn,
-            this.vitiShkollorDataGridViewTextBoxColumn});
-            this.dtgCoursesDatagrid.DataSource = this.kurseBindingSource;
             this.dtgCoursesDatagrid.Location = new System.Drawing.Point(0, 0);
             this.dtgCoursesDatagrid.Name = "dtgCoursesDatagrid";
             this.dtgCoursesDatagrid.Size = new System.Drawing.Size(942, 150);
             this.dtgCoursesDatagrid.TabIndex = 0;
+            // 
+            // kurseBindingSource
+            // 
+            this.kurseBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Kurse);
             // 
             // btnSaveCourses
             // 
@@ -68,46 +57,6 @@
             this.btnSaveCourses.Text = "Save";
             this.btnSaveCourses.UseVisualStyleBackColor = true;
             this.btnSaveCourses.Click += new System.EventHandler(this.BtnSaveCourses_Click);
-            // 
-            // kurseBindingSource
-            // 
-            this.kurseBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Kurse);
-            // 
-            // kursIdDataGridViewTextBoxColumn
-            // 
-            this.kursIdDataGridViewTextBoxColumn.DataPropertyName = "KursId";
-            this.kursIdDataGridViewTextBoxColumn.HeaderText = "KursId";
-            this.kursIdDataGridViewTextBoxColumn.Name = "kursIdDataGridViewTextBoxColumn";
-            // 
-            // shifraKursitDataGridViewTextBoxColumn
-            // 
-            this.shifraKursitDataGridViewTextBoxColumn.DataPropertyName = "ShifraKursit";
-            this.shifraKursitDataGridViewTextBoxColumn.HeaderText = "ShifraKursit";
-            this.shifraKursitDataGridViewTextBoxColumn.Name = "shifraKursitDataGridViewTextBoxColumn";
-            // 
-            // emriKursitDataGridViewTextBoxColumn
-            // 
-            this.emriKursitDataGridViewTextBoxColumn.DataPropertyName = "EmriKursit";
-            this.emriKursitDataGridViewTextBoxColumn.HeaderText = "EmriKursit";
-            this.emriKursitDataGridViewTextBoxColumn.Name = "emriKursitDataGridViewTextBoxColumn";
-            // 
-            // pershkrimiDataGridViewTextBoxColumn
-            // 
-            this.pershkrimiDataGridViewTextBoxColumn.DataPropertyName = "Pershkrimi";
-            this.pershkrimiDataGridViewTextBoxColumn.HeaderText = "Pershkrimi";
-            this.pershkrimiDataGridViewTextBoxColumn.Name = "pershkrimiDataGridViewTextBoxColumn";
-            // 
-            // niveliDataGridViewTextBoxColumn
-            // 
-            this.niveliDataGridViewTextBoxColumn.DataPropertyName = "Niveli";
-            this.niveliDataGridViewTextBoxColumn.HeaderText = "Niveli";
-            this.niveliDataGridViewTextBoxColumn.Name = "niveliDataGridViewTextBoxColumn";
-            // 
-            // vitiShkollorDataGridViewTextBoxColumn
-            // 
-            this.vitiShkollorDataGridViewTextBoxColumn.DataPropertyName = "VitiShkollor";
-            this.vitiShkollorDataGridViewTextBoxColumn.HeaderText = "VitiShkollor";
-            this.vitiShkollorDataGridViewTextBoxColumn.Name = "vitiShkollorDataGridViewTextBoxColumn";
             // 
             // CoursesList
             // 
@@ -128,11 +77,5 @@
         private System.Windows.Forms.BindingSource kurseBindingSource;
         public System.Windows.Forms.DataGridView dtgCoursesDatagrid;
         private System.Windows.Forms.Button btnSaveCourses;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kursIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shifraKursitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emriKursitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pershkrimiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn niveliDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vitiShkollorDataGridViewTextBoxColumn;
     }
 }

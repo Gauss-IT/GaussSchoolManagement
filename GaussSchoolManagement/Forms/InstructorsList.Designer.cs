@@ -32,20 +32,13 @@
             this.dtgInstructorsDataGrid = new System.Windows.Forms.DataGridView();
             this.btnSaveInstructors = new System.Windows.Forms.Button();
             this.instruktoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.instruktorIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgInstructorsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instruktoreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgInstructorsDataGrid
             // 
-            this.dtgInstructorsDataGrid.AutoGenerateColumns = false;
             this.dtgInstructorsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgInstructorsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.instruktorIdDataGridViewTextBoxColumn,
-            this.personIdDataGridViewTextBoxColumn});
-            this.dtgInstructorsDataGrid.DataSource = this.instruktoreBindingSource;
             this.dtgInstructorsDataGrid.Location = new System.Drawing.Point(99, 27);
             this.dtgInstructorsDataGrid.Name = "dtgInstructorsDataGrid";
             this.dtgInstructorsDataGrid.Size = new System.Drawing.Size(451, 150);
@@ -65,18 +58,6 @@
             // 
             this.instruktoreBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Instruktore);
             // 
-            // instruktorIdDataGridViewTextBoxColumn
-            // 
-            this.instruktorIdDataGridViewTextBoxColumn.DataPropertyName = "InstruktorId";
-            this.instruktorIdDataGridViewTextBoxColumn.HeaderText = "InstruktorId";
-            this.instruktorIdDataGridViewTextBoxColumn.Name = "instruktorIdDataGridViewTextBoxColumn";
-            // 
-            // personIdDataGridViewTextBoxColumn
-            // 
-            this.personIdDataGridViewTextBoxColumn.DataPropertyName = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.HeaderText = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.Name = "personIdDataGridViewTextBoxColumn";
-            // 
             // InstructorsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,8 +75,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnSaveInstructors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instruktorIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource instruktoreBindingSource;
         public System.Windows.Forms.DataGridView dtgInstructorsDataGrid;
     }

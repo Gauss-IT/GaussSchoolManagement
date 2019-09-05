@@ -30,17 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgPaymentsDataGrid = new System.Windows.Forms.DataGridView();
-            this.btnSavePayments = new System.Windows.Forms.Button();
-            this.pageseIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formaPagesesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sherbimiIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sasiaSherbimeveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shumaPaguarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zbritjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nxenesPagesasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sherbimetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pagesaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSavePayments = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.nxeneBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPaymentsDataGrid)).BeginInit();
@@ -50,23 +41,15 @@
             // 
             // dtgPaymentsDataGrid
             // 
-            this.dtgPaymentsDataGrid.AutoGenerateColumns = false;
             this.dtgPaymentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPaymentsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.pageseIdDataGridViewTextBoxColumn,
-            this.formaPagesesDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn,
-            this.sherbimiIdDataGridViewTextBoxColumn,
-            this.sasiaSherbimeveDataGridViewTextBoxColumn,
-            this.shumaPaguarDataGridViewTextBoxColumn,
-            this.zbritjeDataGridViewTextBoxColumn,
-            this.nxenesPagesasDataGridViewTextBoxColumn,
-            this.sherbimetDataGridViewTextBoxColumn});
-            this.dtgPaymentsDataGrid.DataSource = this.pagesaBindingSource;
             this.dtgPaymentsDataGrid.Location = new System.Drawing.Point(12, 12);
             this.dtgPaymentsDataGrid.Name = "dtgPaymentsDataGrid";
             this.dtgPaymentsDataGrid.Size = new System.Drawing.Size(920, 150);
             this.dtgPaymentsDataGrid.TabIndex = 0;
+            // 
+            // pagesaBindingSource
+            // 
+            this.pagesaBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Pagesa);
             // 
             // btnSavePayments
             // 
@@ -77,64 +60,6 @@
             this.btnSavePayments.Text = "Save";
             this.btnSavePayments.UseVisualStyleBackColor = true;
             this.btnSavePayments.Click += new System.EventHandler(this.BtnSavePayments_Click);
-            // 
-            // pageseIdDataGridViewTextBoxColumn
-            // 
-            this.pageseIdDataGridViewTextBoxColumn.DataPropertyName = "PageseId";
-            this.pageseIdDataGridViewTextBoxColumn.HeaderText = "PageseId";
-            this.pageseIdDataGridViewTextBoxColumn.Name = "pageseIdDataGridViewTextBoxColumn";
-            // 
-            // formaPagesesDataGridViewTextBoxColumn
-            // 
-            this.formaPagesesDataGridViewTextBoxColumn.DataPropertyName = "FormaPageses";
-            this.formaPagesesDataGridViewTextBoxColumn.HeaderText = "FormaPageses";
-            this.formaPagesesDataGridViewTextBoxColumn.Name = "formaPagesesDataGridViewTextBoxColumn";
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            // 
-            // sherbimiIdDataGridViewTextBoxColumn
-            // 
-            this.sherbimiIdDataGridViewTextBoxColumn.DataPropertyName = "SherbimiId";
-            this.sherbimiIdDataGridViewTextBoxColumn.HeaderText = "SherbimiId";
-            this.sherbimiIdDataGridViewTextBoxColumn.Name = "sherbimiIdDataGridViewTextBoxColumn";
-            // 
-            // sasiaSherbimeveDataGridViewTextBoxColumn
-            // 
-            this.sasiaSherbimeveDataGridViewTextBoxColumn.DataPropertyName = "SasiaSherbimeve";
-            this.sasiaSherbimeveDataGridViewTextBoxColumn.HeaderText = "SasiaSherbimeve";
-            this.sasiaSherbimeveDataGridViewTextBoxColumn.Name = "sasiaSherbimeveDataGridViewTextBoxColumn";
-            // 
-            // shumaPaguarDataGridViewTextBoxColumn
-            // 
-            this.shumaPaguarDataGridViewTextBoxColumn.DataPropertyName = "ShumaPaguar";
-            this.shumaPaguarDataGridViewTextBoxColumn.HeaderText = "ShumaPaguar";
-            this.shumaPaguarDataGridViewTextBoxColumn.Name = "shumaPaguarDataGridViewTextBoxColumn";
-            // 
-            // zbritjeDataGridViewTextBoxColumn
-            // 
-            this.zbritjeDataGridViewTextBoxColumn.DataPropertyName = "Zbritje";
-            this.zbritjeDataGridViewTextBoxColumn.HeaderText = "Zbritje";
-            this.zbritjeDataGridViewTextBoxColumn.Name = "zbritjeDataGridViewTextBoxColumn";
-            // 
-            // nxenesPagesasDataGridViewTextBoxColumn
-            // 
-            this.nxenesPagesasDataGridViewTextBoxColumn.DataPropertyName = "NxenesPagesas";
-            this.nxenesPagesasDataGridViewTextBoxColumn.HeaderText = "NxenesPagesas";
-            this.nxenesPagesasDataGridViewTextBoxColumn.Name = "nxenesPagesasDataGridViewTextBoxColumn";
-            // 
-            // sherbimetDataGridViewTextBoxColumn
-            // 
-            this.sherbimetDataGridViewTextBoxColumn.DataPropertyName = "Sherbimet";
-            this.sherbimetDataGridViewTextBoxColumn.HeaderText = "Sherbimet";
-            this.sherbimetDataGridViewTextBoxColumn.Name = "sherbimetDataGridViewTextBoxColumn";
-            // 
-            // pagesaBindingSource
-            // 
-            this.pagesaBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Pagesa);
             // 
             // comboBox1
             // 
@@ -168,15 +93,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn pageseIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn formaPagesesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sherbimiIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sasiaSherbimeveDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shumaPaguarDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zbritjeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nxenesPagesasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sherbimetDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pagesaBindingSource;
         public System.Windows.Forms.DataGridView dtgPaymentsDataGrid;
         private System.Windows.Forms.Button btnSavePayments;

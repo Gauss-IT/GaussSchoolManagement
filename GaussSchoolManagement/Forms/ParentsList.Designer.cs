@@ -32,20 +32,13 @@
             this.dtgParentsDataGrid = new System.Windows.Forms.DataGridView();
             this.prinderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSaveParents = new System.Windows.Forms.Button();
-            this.prindIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgParentsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prinderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgParentsDataGrid
             // 
-            this.dtgParentsDataGrid.AutoGenerateColumns = false;
             this.dtgParentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgParentsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.prindIdDataGridViewTextBoxColumn,
-            this.personIdDataGridViewTextBoxColumn});
-            this.dtgParentsDataGrid.DataSource = this.prinderBindingSource;
             this.dtgParentsDataGrid.Location = new System.Drawing.Point(108, 29);
             this.dtgParentsDataGrid.Name = "dtgParentsDataGrid";
             this.dtgParentsDataGrid.Size = new System.Drawing.Size(485, 150);
@@ -65,18 +58,6 @@
             this.btnSaveParents.UseVisualStyleBackColor = true;
             this.btnSaveParents.Click += new System.EventHandler(this.BtnSaveParents_Click);
             // 
-            // prindIdDataGridViewTextBoxColumn
-            // 
-            this.prindIdDataGridViewTextBoxColumn.DataPropertyName = "PrindId";
-            this.prindIdDataGridViewTextBoxColumn.HeaderText = "PrindId";
-            this.prindIdDataGridViewTextBoxColumn.Name = "prindIdDataGridViewTextBoxColumn";
-            // 
-            // personIdDataGridViewTextBoxColumn
-            // 
-            this.personIdDataGridViewTextBoxColumn.DataPropertyName = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.HeaderText = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.Name = "personIdDataGridViewTextBoxColumn";
-            // 
             // ParentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,8 +76,6 @@
         #endregion
         private System.Windows.Forms.BindingSource prinderBindingSource;
         private System.Windows.Forms.Button btnSaveParents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prindIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personIdDataGridViewTextBoxColumn;
         public System.Windows.Forms.DataGridView dtgParentsDataGrid;
     }
 }

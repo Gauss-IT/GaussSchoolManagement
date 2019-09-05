@@ -30,32 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgStudentsDataGrid = new System.Windows.Forms.DataGridView();
-            this.btnSaveStudents = new System.Windows.Forms.Button();
             this.nxeneBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nxenesIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shkollaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.klasaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prindIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSaveStudents = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgStudentsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nxeneBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgStudentsDataGrid
             // 
-            this.dtgStudentsDataGrid.AutoGenerateColumns = false;
             this.dtgStudentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgStudentsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nxenesIdDataGridViewTextBoxColumn,
-            this.shkollaIdDataGridViewTextBoxColumn,
-            this.klasaDataGridViewTextBoxColumn,
-            this.prindIdDataGridViewTextBoxColumn,
-            this.personIdDataGridViewTextBoxColumn});
-            this.dtgStudentsDataGrid.DataSource = this.nxeneBindingSource;
             this.dtgStudentsDataGrid.Location = new System.Drawing.Point(90, 34);
             this.dtgStudentsDataGrid.Name = "dtgStudentsDataGrid";
             this.dtgStudentsDataGrid.Size = new System.Drawing.Size(1050, 212);
             this.dtgStudentsDataGrid.TabIndex = 0;
+            // 
+            // nxeneBindingSource
+            // 
+            this.nxeneBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Nxene);
             // 
             // btnSaveStudents
             // 
@@ -66,40 +57,6 @@
             this.btnSaveStudents.Text = "Save";
             this.btnSaveStudents.UseVisualStyleBackColor = true;
             this.btnSaveStudents.Click += new System.EventHandler(this.BtnSaveStudents_Click);
-            // 
-            // nxeneBindingSource
-            // 
-            this.nxeneBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Nxene);
-            // 
-            // nxenesIdDataGridViewTextBoxColumn
-            // 
-            this.nxenesIdDataGridViewTextBoxColumn.DataPropertyName = "NxenesId";
-            this.nxenesIdDataGridViewTextBoxColumn.HeaderText = "NxenesId";
-            this.nxenesIdDataGridViewTextBoxColumn.Name = "nxenesIdDataGridViewTextBoxColumn";
-            // 
-            // shkollaIdDataGridViewTextBoxColumn
-            // 
-            this.shkollaIdDataGridViewTextBoxColumn.DataPropertyName = "ShkollaId";
-            this.shkollaIdDataGridViewTextBoxColumn.HeaderText = "ShkollaId";
-            this.shkollaIdDataGridViewTextBoxColumn.Name = "shkollaIdDataGridViewTextBoxColumn";
-            // 
-            // klasaDataGridViewTextBoxColumn
-            // 
-            this.klasaDataGridViewTextBoxColumn.DataPropertyName = "Klasa";
-            this.klasaDataGridViewTextBoxColumn.HeaderText = "Klasa";
-            this.klasaDataGridViewTextBoxColumn.Name = "klasaDataGridViewTextBoxColumn";
-            // 
-            // prindIdDataGridViewTextBoxColumn
-            // 
-            this.prindIdDataGridViewTextBoxColumn.DataPropertyName = "PrindId";
-            this.prindIdDataGridViewTextBoxColumn.HeaderText = "PrindId";
-            this.prindIdDataGridViewTextBoxColumn.Name = "prindIdDataGridViewTextBoxColumn";
-            // 
-            // personIdDataGridViewTextBoxColumn
-            // 
-            this.personIdDataGridViewTextBoxColumn.DataPropertyName = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.HeaderText = "PersonId";
-            this.personIdDataGridViewTextBoxColumn.Name = "personIdDataGridViewTextBoxColumn";
             // 
             // StudentsList
             // 
@@ -120,10 +77,5 @@
         private System.Windows.Forms.BindingSource nxeneBindingSource;
         public System.Windows.Forms.DataGridView dtgStudentsDataGrid;
         private System.Windows.Forms.Button btnSaveStudents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nxenesIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shkollaIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn klasaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prindIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn personIdDataGridViewTextBoxColumn;
     }
 }
