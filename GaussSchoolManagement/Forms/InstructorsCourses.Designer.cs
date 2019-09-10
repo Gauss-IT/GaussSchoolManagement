@@ -54,6 +54,7 @@
             this.btnRemoveInstCrs.TabIndex = 1;
             this.btnRemoveInstCrs.Text = "Remove Instructor Course";
             this.btnRemoveInstCrs.UseVisualStyleBackColor = true;
+            this.btnRemoveInstCrs.Click += new System.EventHandler(this.BtnRemoveInstCrs_Click);
             // 
             // btnAddInstrCrs
             // 

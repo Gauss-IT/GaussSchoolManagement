@@ -25,9 +25,7 @@ namespace GaussSchoolManagement.Forms
         private void BtnEditPeople_Click(object sender, EventArgs e)
         {
             var form = new PeopleList();
-            DatabaseModel.Instance.Personas.Load();
-            form.dtgPeopleDataGrid.DataSource = 
-                DatabaseModel.Instance.Personas.Local.ToBindingList();
+            
             form.Show();
         }
 
@@ -61,56 +59,42 @@ namespace GaussSchoolManagement.Forms
         private void BtnEditParents_Click(object sender, EventArgs e)
         {
             var form = new ParentsList();
-            DatabaseModel.Instance.Prinders.Load();
-            var source = new BindingSource
-            {
-                DataSource = DatabaseModel.Instance.Prinders
-                .Select(x => x.Persona)
-                .ToList()
-            };
-
-            form.dtgParentsDataGrid.DataSource = source;
             form.Show();
         }
 
         private void BtnEditStudents_Click(object sender, EventArgs e)
         {
             var form = new StudentsList();
-            DatabaseModel.Instance.Nxenes.Load();
-            var source = new BindingSource
-            {
-                DataSource = DatabaseModel.Instance.Nxenes
-                .Select(x => x.Persona)
-                .ToList()
-            };
-            
-            form.dtgStudentsDataGrid.DataSource = source;
             form.Show();
         }
 
         private void btnEditInstructors_Click(object sender, EventArgs e)
         {
             var form = new InstructorsList();
-            DatabaseModel.Instance.Instruktores.Load();
-            var source = new BindingSource
-            {
-                DataSource = DatabaseModel.Instance.Instruktores
-                .Select(x => x.Persona)
-                .ToList()
-            };
-
-
-            form.dtgInstructorsDataGrid.DataSource = source;
             form.Show();
         }
 
         private void BtnInstructorsCourses_Click(object sender, EventArgs e)
         {
             var form = new InstructorsCourses();
-           
+            form.Show();
+        }
 
-            
-            
+        private void BtnStudentCourses_Click(object sender, EventArgs e)
+        {
+            var form = new StudentsCourses();
+            form.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var form = new StudentsPayments();
+            form.Show();
+        }
+
+        private void BtnEditPerson_Click(object sender, EventArgs e)
+        {
+            var form = new StudentOverview();
             form.Show();
         }
     }

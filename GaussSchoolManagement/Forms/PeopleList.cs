@@ -10,11 +10,18 @@ namespace GaussSchoolManagement.Forms
         public PeopleList()
         {
             InitializeComponent();
+            PopulateDataGrid();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             DatabaseModel.Instance.SaveChanges();
+        }
+
+        private void PopulateDataGrid()
+        {
+            DatabaseModel.Instance.Personas.Load();
+            dtgPeopleDataGrid.DataSource = DatabaseModel.Instance.Personas.Local.ToBindingList();
         }
     }
 }

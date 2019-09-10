@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dtgParentsDataGrid = new System.Windows.Forms.DataGridView();
-            this.prinderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSaveParents = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbPeople = new System.Windows.Forms.ComboBox();
+            this.btnAddParent = new System.Windows.Forms.Button();
+            this.btnRemoveParent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgParentsDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prinderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgParentsDataGrid
@@ -44,38 +44,65 @@
             this.dtgParentsDataGrid.Size = new System.Drawing.Size(485, 150);
             this.dtgParentsDataGrid.TabIndex = 0;
             // 
-            // prinderBindingSource
+            // label1
             // 
-            this.prinderBindingSource.DataSource = typeof(GaussSchoolManagement.DataModel.Prinder);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(105, 249);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Personal Data";
             // 
-            // btnSaveParents
+            // cmbPeople
             // 
-            this.btnSaveParents.Location = new System.Drawing.Point(173, 222);
-            this.btnSaveParents.Name = "btnSaveParents";
-            this.btnSaveParents.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveParents.TabIndex = 1;
-            this.btnSaveParents.Text = "Save";
-            this.btnSaveParents.UseVisualStyleBackColor = true;
-            this.btnSaveParents.Click += new System.EventHandler(this.BtnSaveParents_Click);
+            this.cmbPeople.FormattingEnabled = true;
+            this.cmbPeople.Location = new System.Drawing.Point(101, 292);
+            this.cmbPeople.Name = "cmbPeople";
+            this.cmbPeople.Size = new System.Drawing.Size(121, 21);
+            this.cmbPeople.TabIndex = 3;
+            // 
+            // btnAddParent
+            // 
+            this.btnAddParent.Location = new System.Drawing.Point(108, 204);
+            this.btnAddParent.Name = "btnAddParent";
+            this.btnAddParent.Size = new System.Drawing.Size(163, 23);
+            this.btnAddParent.TabIndex = 4;
+            this.btnAddParent.Text = "Add new Parent";
+            this.btnAddParent.UseVisualStyleBackColor = true;
+            this.btnAddParent.Click += new System.EventHandler(this.BtnAddParent_Click);
+            // 
+            // btnRemoveParent
+            // 
+            this.btnRemoveParent.Location = new System.Drawing.Point(430, 204);
+            this.btnRemoveParent.Name = "btnRemoveParent";
+            this.btnRemoveParent.Size = new System.Drawing.Size(163, 23);
+            this.btnRemoveParent.TabIndex = 4;
+            this.btnRemoveParent.Text = "Remove Parent";
+            this.btnRemoveParent.UseVisualStyleBackColor = true;
             // 
             // ParentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSaveParents);
+            this.Controls.Add(this.btnRemoveParent);
+            this.Controls.Add(this.btnAddParent);
+            this.Controls.Add(this.cmbPeople);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgParentsDataGrid);
             this.Name = "ParentsList";
             this.Text = "ParentsList";
             ((System.ComponentModel.ISupportInitialize)(this.dtgParentsDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prinderBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource prinderBindingSource;
-        private System.Windows.Forms.Button btnSaveParents;
         public System.Windows.Forms.DataGridView dtgParentsDataGrid;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbPeople;
+        private System.Windows.Forms.Button btnAddParent;
+        private System.Windows.Forms.Button btnRemoveParent;
     }
 }

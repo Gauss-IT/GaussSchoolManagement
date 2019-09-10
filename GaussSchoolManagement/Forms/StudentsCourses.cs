@@ -1,65 +1,67 @@
 ﻿using GaussSchoolManagement.DataModel;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GaussSchoolManagement.Forms
 {
-    public partial class InstructorsCourses : Form
+    public partial class StudentsCourses : Form
     {
-        public InstructorsCourses()
+        public StudentsCourses()
         {
             InitializeComponent();
             PopulateDataGrid();
             PopulateComboBoxes();
         }
 
-        private void BtnAddInstrCrs_Click(object sender, System.EventArgs e)
+        private void BtnAddStdntCrs_Click(object sender, EventArgs e)
         {
-            var kurseInstruktore = new InstruktoreKurse
+            var nxenesKurse = new NxenesKurse
             {
-                InstruktorId = ((dynamic)cmbInstructors.SelectedItem).Id,
+                NxenesId = ((dynamic)cmbStudents.SelectedItem).Id,
                 KursId = ((dynamic)cmbCourses.SelectedItem).Id
             };
-            DatabaseModel.Instance.InstruktoreKurses.Add(kurseInstruktore);
+            DatabaseModel.Instance.NxenesKurses.Add(nxenesKurse);
             DatabaseModel.Instance.SaveChanges();
             PopulateDataGrid();
         }
 
-        private void BtnRemoveInstCrs_Click(object sender, System.EventArgs e)
-        {
-            //TODO: Implement the remove button
-        }
-
         private void PopulateDataGrid()
         {
-            DatabaseModel.Instance.InstruktoreKurses.Load();
+            DatabaseModel.Instance.NxenesKurses.Load();
             var source = new BindingSource
             {
-                DataSource = DatabaseModel.Instance.InstruktoreKurses
+                DataSource = DatabaseModel.Instance.NxenesKurses
                 .Select(x =>
                 new {
-                    x.Instruktore.Persona.Emri,
-                    x.Instruktore.Persona.Mbiemri,
+                    x.Nxene.Persona.Emri,
+                    x.Nxene.Persona.Mbiemri,
                     x.Kurse.EmriKursit,
                     x.Kurse.Pershkrimi
                 })
                 .ToList()
             };
-            dtgInstructorsCourses.DataSource = source;
+            dtgStudentsCourses.DataSource = source;
         }
 
         private void PopulateComboBoxes()
         {
-            var instSource = new BindingSource
+            var stdntSource = new BindingSource
             {
-                DataSource = DatabaseModel.Instance.Instruktores
-               .Select(x => new { Id = x.InstruktorId, Value = x.Persona.Emri + " " + x.Persona.Mbiemri })
+                DataSource = DatabaseModel.Instance.Nxenes
+               .Select(x => new { Id = x.NxenesId, Value = x.Persona.Emri + " " + x.Persona.Mbiemri })
                .ToList()
             };
-            cmbInstructors.DataSource = instSource;
-            cmbInstructors.DisplayMember = "Value";
-            cmbInstructors.ValueMember = "Id";
+            cmbStudents.DataSource = stdntSource;
+            cmbStudents.DisplayMember = "Value";
+            cmbStudents.ValueMember = "Id";
 
             var courseSource = new BindingSource
             {
@@ -73,6 +75,5 @@ namespace GaussSchoolManagement.Forms
             cmbCourses.ValueMember = "Id";
         }
 
-        
     }
 }

@@ -37,6 +37,9 @@
             this.btnEditStudents = new System.Windows.Forms.Button();
             this.btnEditInstructors = new System.Windows.Forms.Button();
             this.btnInstructorsCourses = new System.Windows.Forms.Button();
+            this.btnStudentCourses = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnStudentOverview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEditSchools
@@ -91,7 +94,7 @@
             // 
             // btnEditParents
             // 
-            this.btnEditParents.Location = new System.Drawing.Point(12, 92);
+            this.btnEditParents.Location = new System.Drawing.Point(648, 220);
             this.btnEditParents.Name = "btnEditParents";
             this.btnEditParents.Size = new System.Drawing.Size(114, 64);
             this.btnEditParents.TabIndex = 6;
@@ -101,7 +104,7 @@
             // 
             // btnEditStudents
             // 
-            this.btnEditStudents.Location = new System.Drawing.Point(12, 162);
+            this.btnEditStudents.Location = new System.Drawing.Point(648, 290);
             this.btnEditStudents.Name = "btnEditStudents";
             this.btnEditStudents.Size = new System.Drawing.Size(114, 64);
             this.btnEditStudents.TabIndex = 7;
@@ -111,7 +114,7 @@
             // 
             // btnEditInstructors
             // 
-            this.btnEditInstructors.Location = new System.Drawing.Point(12, 21);
+            this.btnEditInstructors.Location = new System.Drawing.Point(648, 149);
             this.btnEditInstructors.Name = "btnEditInstructors";
             this.btnEditInstructors.Size = new System.Drawing.Size(114, 65);
             this.btnEditInstructors.TabIndex = 8;
@@ -121,7 +124,7 @@
             // 
             // btnInstructorsCourses
             // 
-            this.btnInstructorsCourses.Location = new System.Drawing.Point(302, 163);
+            this.btnInstructorsCourses.Location = new System.Drawing.Point(439, 21);
             this.btnInstructorsCourses.Name = "btnInstructorsCourses";
             this.btnInstructorsCourses.Size = new System.Drawing.Size(114, 65);
             this.btnInstructorsCourses.TabIndex = 1;
@@ -129,12 +132,45 @@
             this.btnInstructorsCourses.UseVisualStyleBackColor = true;
             this.btnInstructorsCourses.Click += new System.EventHandler(this.BtnInstructorsCourses_Click);
             // 
+            // btnStudentCourses
+            // 
+            this.btnStudentCourses.Location = new System.Drawing.Point(439, 93);
+            this.btnStudentCourses.Name = "btnStudentCourses";
+            this.btnStudentCourses.Size = new System.Drawing.Size(114, 64);
+            this.btnStudentCourses.TabIndex = 9;
+            this.btnStudentCourses.Text = "Students Courses";
+            this.btnStudentCourses.UseVisualStyleBackColor = true;
+            this.btnStudentCourses.Click += new System.EventHandler(this.BtnStudentCourses_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(439, 164);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 63);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Students Payments";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // btnStudentOverview
+            // 
+            this.btnStudentOverview.Location = new System.Drawing.Point(12, 22);
+            this.btnStudentOverview.Name = "btnStudentOverview";
+            this.btnStudentOverview.Size = new System.Drawing.Size(114, 64);
+            this.btnStudentOverview.TabIndex = 7;
+            this.btnStudentOverview.Text = "Student overview";
+            this.btnStudentOverview.UseVisualStyleBackColor = true;
+            this.btnStudentOverview.Click += new System.EventHandler(this.BtnEditPerson_Click);
+            // 
             // EntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnStudentCourses);
             this.Controls.Add(this.btnEditInstructors);
+            this.Controls.Add(this.btnStudentOverview);
             this.Controls.Add(this.btnEditStudents);
             this.Controls.Add(this.btnEditParents);
             this.Controls.Add(this.btnEditServices);
@@ -159,6 +195,9 @@
         private System.Windows.Forms.Button btnEditStudents;
         private System.Windows.Forms.Button btnEditInstructors;
         private System.Windows.Forms.Button btnInstructorsCourses;
+        private System.Windows.Forms.Button btnStudentCourses;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStudentOverview;
     }
 }
 

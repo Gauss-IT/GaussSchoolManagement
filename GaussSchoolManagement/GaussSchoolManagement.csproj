@@ -63,6 +63,12 @@
     <Compile Include="Forms\CoursesList.Designer.cs">
       <DependentUpon>CoursesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditDetails.Designer.cs">
+      <DependentUpon>EditDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,17 +115,35 @@
     <Compile Include="Forms\PeopleList.Designer.cs">
       <DependentUpon>PeopleList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StudentOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentOverview.Designer.cs">
+      <DependentUpon>StudentOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ServicesList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ServicesList.Designer.cs">
       <DependentUpon>ServicesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StudentsCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentsCourses.Designer.cs">
+      <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StudentsList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\StudentsList.Designer.cs">
       <DependentUpon>StudentsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StudentsPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentsPayments.Designer.cs">
+      <DependentUpon>StudentsPayments.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Forms\SchoolsList.cs">
@@ -134,6 +158,9 @@
     <Compile Include="DataModel\sysdiagram.cs" />
     <EmbeddedResource Include="Forms\CoursesList.resx">
       <DependentUpon>CoursesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditDetails.resx">
+      <DependentUpon>EditDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
@@ -153,14 +180,23 @@
     <EmbeddedResource Include="Forms\PeopleList.resx">
       <DependentUpon>PeopleList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentOverview.resx">
+      <DependentUpon>StudentOverview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SchoolsList.resx">
       <DependentUpon>SchoolsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServicesList.resx">
       <DependentUpon>ServicesList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentsCourses.resx">
+      <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentsPayments.resx">
+      <DependentUpon>StudentsPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
