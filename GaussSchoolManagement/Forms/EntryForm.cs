@@ -97,5 +97,11 @@ namespace GaussSchoolManagement.Forms
             var form = new StudentOverview();
             form.Show();
         }
+
+        private void BtnInstructorOverview_Click(object sender, EventArgs e)
+        {
+            var form = new InstructorOverview();
+            form.Show();
+        }
     }
 }

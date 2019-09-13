@@ -10,12 +10,15 @@ namespace GaussSchoolManagement.Forms
 {    
     public partial class StudentsList : Form
     {
+        private StudentOverview _parent;
+
         private List<StudentsListData> _gridData;
         private List<StudentsListData> GridData => _gridData ?? (_gridData =
             DatabaseModel.Instance.Nxenes
                 .Select(x =>
                 new
                 {
+                    Id = x.NxenesId,
                     Name = x.Persona.Emri,
                     Surname = x.Persona.Mbiemri,
                     Kurse = x.NxenesKurses.Select(y => y.Kurse.EmriKursit).ToList(),
@@ -24,6 +27,7 @@ namespace GaussSchoolManagement.Forms
                 }).AsEnumerable().Select(z =>
                  
                  new StudentsListData {
+                    Id = z.Id,
                     Name = z.Name,
                     Surname = z.Surname,
                     Kurse = string.Join(", ", z.Kurse),
@@ -31,39 +35,32 @@ namespace GaussSchoolManagement.Forms
                     School = z.School
                  }).ToList());
 
+        public StudentsList(StudentOverview studentOverview):this()
+        {
+            _parent = studentOverview;
+        }
+
         public StudentsList()
         {
             InitializeComponent();
             PopulateDataGrid();
-            PopulateComboBox();
         }
 
-        private void BtnAddStudents_Click(object sender, EventArgs e)
+        private void BtnStudentOverview_Click(object sender, EventArgs e)
         {
-            //var newStudent = new Nxene();
-            //newStudent.PersonId = ((dynamic)cmbPeople.SelectedItem).Id;
-            //DatabaseModel.Instance.Nxenes.Add(newStudent);
-            //DatabaseModel.Instance.SaveChanges();
-            //PopulateDataGrid();
-        }
+            if (dtgStudentsDataGrid.SelectedRows.Count == 0)
+                return;
 
+            var id = (int)dtgStudentsDataGrid.SelectedRows[0].Cells[0].Value;            
+            _parent.StudentID = id;
+            _parent.Show();
+            Close();
+        }
         private void PopulateDataGrid()
         {
             DatabaseModel.Instance.Nxenes.Load();
             dtgStudentsDataGrid.DataSource = new BindingSource { DataSource = GridData };
-        }
-
-        private void PopulateComboBox()
-        {
-            //var peopleSource = new BindingSource
-            //{
-            //    DataSource = DatabaseModel.Instance.Personas
-            //   .Select(x => new { Id = x.PersonId, Value = x.Emri + " " + x.Mbiemri })
-            //   .ToList()
-            //};
-            //cmbPeople.DataSource = peopleSource;
-            //cmbPeople.DisplayMember = "Value";
-            //cmbPeople.ValueMember = "Id";
+            dtgStudentsDataGrid.Columns["Id"].Visible = false;
         }
 
         private void OnInputChanged(object sender, EventArgs e)
@@ -76,8 +73,12 @@ namespace GaussSchoolManagement.Forms
 
             if (txtSurname.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.Surname.ToLower().StartsWith(txtSurname.Text.ToLower()));
+
             if (txtCourse.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.Kurse.ToLower().Contains(txtCourse.Text.ToLower()));
+
+            if (txtSchool.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.School.ToLower().StartsWith(txtSchool.Text.ToLower()));
 
             dtgStudentsDataGrid.DataSource = new BindingSource
             {
@@ -86,6 +87,7 @@ namespace GaussSchoolManagement.Forms
         }
         public class StudentsListData
         {
+            public int Id { get; set; }
             public string Name { get; set; }
             public string Surname { get; set; }
             public string Kurse { get; set; }
@@ -93,5 +95,6 @@ namespace GaussSchoolManagement.Forms
             public string School { get; set; }
         }
 
+        
     }
 }

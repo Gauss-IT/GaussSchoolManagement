@@ -40,6 +40,7 @@
             this.btnStudentCourses = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnStudentOverview = new System.Windows.Forms.Button();
+            this.btnInstructorOverview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEditSchools
@@ -162,6 +163,16 @@
             this.btnStudentOverview.UseVisualStyleBackColor = true;
             this.btnStudentOverview.Click += new System.EventHandler(this.BtnEditPerson_Click);
             // 
+            // btnInstructorOverview
+            // 
+            this.btnInstructorOverview.Location = new System.Drawing.Point(12, 93);
+            this.btnInstructorOverview.Name = "btnInstructorOverview";
+            this.btnInstructorOverview.Size = new System.Drawing.Size(114, 64);
+            this.btnInstructorOverview.TabIndex = 7;
+            this.btnInstructorOverview.Text = "Instructor overview";
+            this.btnInstructorOverview.UseVisualStyleBackColor = true;
+            this.btnInstructorOverview.Click += new System.EventHandler(this.BtnInstructorOverview_Click);
+            // 
             // EntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +181,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnStudentCourses);
             this.Controls.Add(this.btnEditInstructors);
+            this.Controls.Add(this.btnInstructorOverview);
             this.Controls.Add(this.btnStudentOverview);
             this.Controls.Add(this.btnEditStudents);
             this.Controls.Add(this.btnEditParents);
@@ -198,6 +210,7 @@
         private System.Windows.Forms.Button btnStudentCourses;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStudentOverview;
+        private System.Windows.Forms.Button btnInstructorOverview;
     }
 }
 
