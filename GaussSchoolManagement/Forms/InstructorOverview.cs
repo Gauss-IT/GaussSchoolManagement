@@ -83,8 +83,8 @@ namespace GaussSchoolManagement.Forms
         private void BtnEditDetails_Click_1(object sender, EventArgs e)
         {
             Hide();
-            var form = new EditDetails(InstructorID);
-            form.Show();
+            //var form = new EditStudentDetails(this);
+            //form.Show();
         }
 
         private void BtnFindInstructor_Click(object sender, EventArgs e)

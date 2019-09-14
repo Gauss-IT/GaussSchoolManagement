@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dtgStudentsDataGrid = new System.Windows.Forms.DataGridView();
-            this.btnAddStudent = new System.Windows.Forms.Button();
-            this.btnRemoveStudent = new System.Windows.Forms.Button();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,7 +39,7 @@
             this.txtBirthYear = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSchool = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClearSearch = new System.Windows.Forms.Button();
             this.btnStudentOverview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgStudentsDataGrid)).BeginInit();
             this.SuspendLayout();
@@ -58,24 +56,7 @@
             this.dtgStudentsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgStudentsDataGrid.Size = new System.Drawing.Size(560, 184);
             this.dtgStudentsDataGrid.TabIndex = 0;
-            // 
-            // btnAddStudent
-            // 
-            this.btnAddStudent.Location = new System.Drawing.Point(194, 289);
-            this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(140, 23);
-            this.btnAddStudent.TabIndex = 1;
-            this.btnAddStudent.Text = "Add new Student";
-            this.btnAddStudent.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveStudent
-            // 
-            this.btnRemoveStudent.Location = new System.Drawing.Point(340, 289);
-            this.btnRemoveStudent.Name = "btnRemoveStudent";
-            this.btnRemoveStudent.Size = new System.Drawing.Size(142, 23);
-            this.btnRemoveStudent.TabIndex = 1;
-            this.btnRemoveStudent.Text = "Remove Student";
-            this.btnRemoveStudent.UseVisualStyleBackColor = true;
+            this.dtgStudentsDataGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DtgStudentsDataGrid_CellMouseDoubleClick);
             // 
             // txtSurname
             // 
@@ -162,22 +143,23 @@
             this.txtSchool.TabIndex = 7;
             this.txtSchool.TextChanged += new System.EventHandler(this.OnInputChanged);
             // 
-            // button1
+            // btnClearSearch
             // 
-            this.button1.Location = new System.Drawing.Point(496, 289);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Clear search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Location = new System.Drawing.Point(496, 289);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(154, 23);
+            this.btnClearSearch.TabIndex = 1;
+            this.btnClearSearch.Text = "Clear search";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.BtnClearSearch_Click);
             // 
             // btnStudentOverview
             // 
-            this.btnStudentOverview.Location = new System.Drawing.Point(48, 289);
+            this.btnStudentOverview.Location = new System.Drawing.Point(93, 289);
             this.btnStudentOverview.Name = "btnStudentOverview";
             this.btnStudentOverview.Size = new System.Drawing.Size(140, 23);
             this.btnStudentOverview.TabIndex = 1;
-            this.btnStudentOverview.Text = "Student Overview";
+            this.btnStudentOverview.Text = "Select Student";
             this.btnStudentOverview.UseVisualStyleBackColor = true;
             this.btnStudentOverview.Click += new System.EventHandler(this.BtnStudentOverview_Click);
             // 
@@ -196,10 +178,8 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnRemoveStudent);
+            this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.btnStudentOverview);
-            this.Controls.Add(this.btnAddStudent);
             this.Controls.Add(this.dtgStudentsDataGrid);
             this.Name = "StudentsList";
             this.Text = "StudentsList";
@@ -211,8 +191,6 @@
 
         #endregion
         public System.Windows.Forms.DataGridView dtgStudentsDataGrid;
-        private System.Windows.Forms.Button btnAddStudent;
-        private System.Windows.Forms.Button btnRemoveStudent;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
@@ -223,7 +201,7 @@
         private System.Windows.Forms.TextBox txtBirthYear;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSchool;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClearSearch;
         private System.Windows.Forms.Button btnStudentOverview;
     }
 }

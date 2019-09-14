@@ -48,6 +48,11 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnStudentOverview_Click(object sender, EventArgs e)
         {
+            OnStudentSelected();
+        }
+
+        private void OnStudentSelected()
+        {
             if (dtgStudentsDataGrid.SelectedRows.Count == 0)
                 return;
 
@@ -56,6 +61,7 @@ namespace GaussSchoolManagement.Forms
             _parent.Show();
             Close();
         }
+
         private void PopulateDataGrid()
         {
             DatabaseModel.Instance.Nxenes.Load();
@@ -65,7 +71,6 @@ namespace GaussSchoolManagement.Forms
 
         private void OnInputChanged(object sender, EventArgs e)
         {
-
             var selectedGridData = GridData as IEnumerable<StudentsListData>;
 
             if (txtName.Text.Any())
@@ -80,21 +85,37 @@ namespace GaussSchoolManagement.Forms
             if (txtSchool.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.School.ToLower().StartsWith(txtSchool.Text.ToLower()));
 
+            if (txtBirthYear.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Birthday.HasValue 
+                && x.Birthday.Value.Year.ToString().ToLower().Contains(txtSchool.Text.ToLower()));
+
             dtgStudentsDataGrid.DataSource = new BindingSource
             {
                 DataSource = selectedGridData
             }; 
         }
-        public class StudentsListData
+
+        private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Kurse { get; set; }
-            public DateTime? Birthday { get; set; }
-            public string School { get; set; }
+            OnStudentSelected();
         }
 
-        
+        private void BtnClearSearch_Click(object sender, EventArgs e)
+        {
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtSchool.Text = "";
+            txtCourse.Text = "";
+            txtBirthYear.Text = "";
+        }
+    }
+    public class StudentsListData
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Kurse { get; set; }
+        public DateTime? Birthday { get; set; }
+        public string School { get; set; }
     }
 }

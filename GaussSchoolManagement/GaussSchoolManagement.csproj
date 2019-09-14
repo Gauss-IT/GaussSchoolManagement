@@ -63,11 +63,17 @@
     <Compile Include="Forms\CoursesList.Designer.cs">
       <DependentUpon>CoursesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditDetails.cs">
+    <Compile Include="Forms\EditStudentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditDetails.Designer.cs">
-      <DependentUpon>EditDetails.cs</DependentUpon>
+    <Compile Include="Forms\EditStudentDetails.Designer.cs">
+      <DependentUpon>EditStudentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EntryForm.cs">
       <SubType>Form</SubType>
@@ -165,8 +171,11 @@
     <EmbeddedResource Include="Forms\CoursesList.resx">
       <DependentUpon>CoursesList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditDetails.resx">
-      <DependentUpon>EditDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditStudentDetails.resx">
+      <DependentUpon>EditStudentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>

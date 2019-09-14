@@ -1,5 +1,6 @@
 ﻿using GaussSchoolManagement.DataModel;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,48 +9,30 @@ namespace GaussSchoolManagement.Forms
 {
     public partial class StudentOverview : Form
     {
-        private int _id = 1;
+        public List<int> StudentIDs { get; set; }
+
+        private int _id = -1;
         public int StudentID
         {
             get => _id;
             set
             {
-                if (_id == value)
-                    return;
                 _id = value;
                 FillTextFields();
-            }
-        }
-        private int _maxId = -1;
-        public int MaxId
-        {
-            get
-            {
-                if (_maxId == -1)
-                  _maxId = DatabaseModel.Instance.Nxenes.Count();
-
-                return _maxId;
-            }
-
-            set
-            {
-                if (_maxId == value)
-                    return;
-
-                _maxId = value;                
             }
         }
 
         public StudentOverview()
         {
             InitializeComponent();
-            FillTextFields();
+            UpdateStudentIds();
+            StudentID = StudentIDs.Min();
         }
 
         private void BtnEditDetails_Click(object sender, EventArgs e)
         {
             Hide();
-            var form = new EditDetails(StudentID);
+            var form = new EditStudentDetails(this);
             form.Show();
         }
 
@@ -62,36 +45,29 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            var form = new EditDetails();
+            var form = new EditStudentDetails(this, true);
             form.Show();
-        }
-
-        private void TxtId_TextChanged(object sender, EventArgs e)
-        {
-            FillTextFields();
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
-            if (StudentID <= 1)
+            if (!StudentIDs.Any() || StudentID <= StudentIDs.Min())
                 return;
 
-            StudentID--;
-            
+            DecrementStudentId();
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            if (StudentID >= MaxId)
+            if (!StudentIDs.Any() || StudentID >= StudentIDs.Max())
                 return;
 
-            StudentID++;
-            
+            IncrementStudentId();
         }
 
         private void FillTextFields()
         {
-            if (StudentID <= 0)
+            if (StudentID <= 0 || !StudentIDs.Contains(StudentID))
                 return;
 
             var data = DatabaseModel.Instance.Nxenes.First(x => x.NxenesId == StudentID);
@@ -100,22 +76,64 @@ namespace GaussSchoolManagement.Forms
             lblSurname.Text = data.Persona.Mbiemri;
 
             var kurse = data.NxenesKurses
-                .Where(x=>x.NxenesId == StudentID)
+                .Where(x => x.NxenesId == StudentID)
                 .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
                 .ToList();
             lbCourses.DataSource = kurse;
+            UpdateButtonEnabled();
+        }
 
-            if (StudentID == MaxId)
+        private void UpdateButtonEnabled()
+        {
+            if (StudentID == StudentIDs.Max())
                 btnNext.Enabled = false;
 
-            if (StudentID > 1)
+            if (StudentID > StudentIDs.Min())
                 btnPrevious.Enabled = true;
 
-            if (StudentID == 1)
+            if (StudentID == StudentIDs.Min())
                 btnPrevious.Enabled = false;
 
-            if (StudentID < MaxId)
+            if (StudentID < StudentIDs.Max())
                 btnNext.Enabled = true;
+        }
+
+        public void UpdateStudentIds()
+        {
+            StudentIDs =  DatabaseModel.Instance.Nxenes
+                                .Select(x => x.NxenesId)
+                                .AsEnumerable().ToList();
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            if (!StudentIDs.Contains(StudentID))
+                return;
+            var student = DatabaseModel.Instance.Nxenes.First(x=>x.NxenesId == StudentID);
+            DatabaseModel.Instance.Personas.Remove(student.Persona);
+            DatabaseModel.Instance.Prinders.Remove(student.Prinder);
+            DatabaseModel.Instance.Nxenes.Remove(student);
+            DatabaseModel.Instance.SaveChanges();
+            UpdateStudentIds();
+            IncrementStudentId();
+            UpdateButtonEnabled();
+        }
+
+        private void IncrementStudentId()
+        {
+            var nextId = _id + 1;
+            while (nextId < StudentIDs.Max() && !StudentIDs.Contains(nextId))
+                nextId++;
+
+            StudentID = nextId;
+        }
+
+        private void DecrementStudentId()
+        {
+            var previousId = _id - 1;
+            while (previousId > StudentIDs.Min() && !StudentIDs.Contains(previousId))
+                previousId--;
+            StudentID = previousId;
         }
     }
 }
