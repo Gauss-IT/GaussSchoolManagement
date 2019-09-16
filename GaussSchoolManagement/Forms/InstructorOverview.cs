@@ -1,59 +1,73 @@
 ﻿using GaussSchoolManagement.DataModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GaussSchoolManagement.Forms
 {
     public partial class InstructorOverview : Form
     {
+        public List<int> InstructorIDs { get; set; }
 
-        private int _id = 1;
+        private int _id = -1;
         public int InstructorID
         {
             get => _id;
             set
             {
-                if (_id == value)
-                    return;
                 _id = value;
                 FillTextFields();
-            }
-        }
-        private int _maxId = -1;
-        public int MaxId
-        {
-            get
-            {
-                if (_maxId == -1)
-                    _maxId = DatabaseModel.Instance.Instruktores.Count();
-
-                return _maxId;
-            }
-
-            set
-            {
-                if (_maxId == value)
-                    return;
-
-                _maxId = value;
             }
         }
 
         public InstructorOverview()
         {
             InitializeComponent();
+            UpdateInstructorIds();
+            InstructorID = InstructorIDs.Min();
+        }
+
+        private void BtnEditDetails_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new EditInstructorDetails(this);
+            form.Show();
+        }
+
+         private void BtnFindInstructor_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new InstructorsList(this);
+            form.Show();
+        }
+
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+            var form = new EditInstructorDetails(this, true);
+            form.Show();
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            if (!InstructorIDs.Any() || InstructorID <= InstructorIDs.Min())
+                return;
+
+            DecrementInstructorId();
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            if (!InstructorIDs.Any() || InstructorID >= InstructorIDs.Max())
+                return;
+
+            IncrementInstructorId();
         }
 
         private void FillTextFields()
         {
-            if (InstructorID <= 0)
+            if (InstructorID <= 0 || !InstructorIDs.Contains(InstructorID))
                 return;
 
             var data = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == InstructorID);
@@ -61,53 +75,67 @@ namespace GaussSchoolManagement.Forms
             lblName.Text = data.Persona.Emri;
             lblSurname.Text = data.Persona.Mbiemri;
 
-            var kurse = data.InstruktoreKurses
+            var courses = data.InstruktoreKurses
                 .Where(x => x.InstruktorId == InstructorID)
                 .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
                 .ToList();
-            lbCourses.DataSource = kurse;
+            lbCourses.DataSource = courses;         
 
-            if (InstructorID == MaxId)
+            UpdateButtonEnabled();
+        }
+
+        private void UpdateButtonEnabled()
+        {
+            if (InstructorID == InstructorIDs.Max())
                 btnNext.Enabled = false;
 
-            if (InstructorID > 1)
+            if (InstructorID > InstructorIDs.Min())
                 btnPrevious.Enabled = true;
 
-            if (InstructorID == 1)
+            if (InstructorID == InstructorIDs.Min())
                 btnPrevious.Enabled = false;
 
-            if (InstructorID < MaxId)
+            if (InstructorID < InstructorIDs.Max())
                 btnNext.Enabled = true;
         }
 
-        private void BtnEditDetails_Click_1(object sender, EventArgs e)
+        public void UpdateInstructorIds()
         {
-            Hide();
-            //var form = new EditStudentDetails(this);
-            //form.Show();
+            InstructorIDs =  DatabaseModel.Instance.Instruktores
+                                .Select(x => x.InstruktorId)
+                                .AsEnumerable().ToList();
         }
 
-        private void BtnFindInstructor_Click(object sender, EventArgs e)
+        private void BtnRemove_Click(object sender, EventArgs e)
         {
-            Hide();
-            //var form = new StudentsList(this);
-            //form.Show();
-        }
-
-        private void BtnPrevious_Click_1(object sender, EventArgs e)
-        {
-            if (InstructorID <= 1)
+            if (!InstructorIDs.Contains(InstructorID))
                 return;
-
-            InstructorID--;
+            var instructor = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == InstructorID);
+            DatabaseModel.Instance.Instruktores.Remove(instructor);
+            DatabaseModel.Instance.SaveChanges();
+            UpdateInstructorIds();
+            if(InstructorIDs.Contains(InstructorID + 1))
+                IncrementInstructorId();
+            else
+                 DecrementInstructorId();
+            UpdateButtonEnabled();
         }
 
-        private void BtnNext_Click_1(object sender, EventArgs e)
+        private void IncrementInstructorId()
         {
-            if (InstructorID >= MaxId)
-                return;
+            var nextId = _id + 1;
+            while (nextId < InstructorIDs.Max() && !InstructorIDs.Contains(nextId))
+                nextId++;
 
-            InstructorID++;
+            InstructorID = nextId;
+        }
+
+        private void DecrementInstructorId()
+        {
+            var previousId = _id - 1;
+            while (previousId > InstructorIDs.Min() && !InstructorIDs.Contains(previousId))
+                previousId--;
+            InstructorID = previousId;
         }
     }
 }

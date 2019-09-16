@@ -37,7 +37,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnFindStudent = new System.Windows.Forms.Button();
             this.btnEditDetails = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lbCourses = new System.Windows.Forms.ListBox();
             this.lblId = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -54,7 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lbPayments = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -147,14 +146,6 @@
             this.btnEditDetails.Text = "Edit";
             this.btnEditDetails.UseVisualStyleBackColor = true;
             this.btnEditDetails.Click += new System.EventHandler(this.BtnEditDetails_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(256, 97);
-            this.dataGridView1.TabIndex = 7;
             // 
             // lbCourses
             // 
@@ -309,7 +300,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Controls.Add(this.lbPayments);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button1);
@@ -319,6 +310,17 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Payments";
+            // 
+            // lbPayments
+            // 
+            this.lbPayments.FormattingEnabled = true;
+            this.lbPayments.Items.AddRange(new object[] {
+            "Small Basic",
+            "Python"});
+            this.lbPayments.Location = new System.Drawing.Point(25, 28);
+            this.lbPayments.Name = "lbPayments";
+            this.lbPayments.Size = new System.Drawing.Size(256, 121);
+            this.lbPayments.TabIndex = 8;
             // 
             // StudentOverview
             // 
@@ -335,7 +337,6 @@
             this.Controls.Add(this.groupBox3);
             this.Name = "StudentOverview";
             this.Text = "Student Overview";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -356,7 +357,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnFindStudent;
         private System.Windows.Forms.Button btnEditDetails;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ListBox lbCourses;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblName;
@@ -373,5 +373,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox lbPayments;
     }
 }

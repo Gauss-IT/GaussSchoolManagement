@@ -23,6 +23,7 @@ namespace GaussSchoolManagement.DataModel
         [Column(TypeName = "date")]
         public DateTime? Data { get; set; }
 
+        [ForeignKey("Sherbimet")]
         public int? SherbimiId { get; set; }
 
         public decimal? SasiaSherbimeve { get; set; }

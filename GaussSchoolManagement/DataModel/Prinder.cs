@@ -16,6 +16,7 @@ namespace GaussSchoolManagement.DataModel
         [Key]
         public int PrindId { get; set; }
 
+        [ForeignKey("Persona")]
         public int? PersonId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

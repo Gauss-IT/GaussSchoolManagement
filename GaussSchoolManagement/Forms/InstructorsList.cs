@@ -1,58 +1,115 @@
 ﻿using GaussSchoolManagement.DataModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GaussSchoolManagement.Forms
-{
+{    
     public partial class InstructorsList : Form
     {
+        private InstructorOverview _parent;
+
+        private List<InstructorsListData> _gridData;
+        private List<InstructorsListData> GridData => _gridData ?? (_gridData =
+            DatabaseModel.Instance.Instruktores
+                .Select(x =>
+                new
+                {
+                    Id = x.InstruktorId,
+                    Name = x.Persona.Emri,
+                    Surname = x.Persona.Mbiemri,
+                    Kurse = x.InstruktoreKurses.Select(y => y.Kurse.EmriKursit).ToList(),
+                    Birthday = x.Persona.DataLindjes
+                }).AsEnumerable().Select(z =>
+                 
+                 new InstructorsListData
+                 {
+                    Id = z.Id,
+                    Name = z.Name,
+                    Surname = z.Surname,
+                    Kurse = string.Join(", ", z.Kurse),
+                    Birthday = z.Birthday
+                 }).ToList());
+
+        public InstructorsList(InstructorOverview instructorOverview):this()
+        {
+            _parent = instructorOverview;
+        }
+
         public InstructorsList()
         {
             InitializeComponent();
             PopulateDataGrid();
-            PopulateComboBoxes();
         }
 
-        private void BtnAddInstructors_Click(object sender, EventArgs e)
+        private void BtnInstructorOverview_Click(object sender, EventArgs e)
         {
-            var newInstructor = new Instruktore();
-            newInstructor.PersonId = ((dynamic)cmbPeople.SelectedItem).Id;
-            DatabaseModel.Instance.Instruktores.Add(newInstructor);
-            DatabaseModel.Instance.SaveChanges();
-            PopulateDataGrid();
+            OnInstructorSelected();
+        }
+
+        private void OnInstructorSelected()
+        {
+            if (dtgInstructorsDataGrid.SelectedRows.Count == 0)
+                return;
+
+            var id = (int)dtgInstructorsDataGrid.SelectedRows[0].Cells[0].Value;            
+            _parent.InstructorID = id;
+            _parent.Show();
+            Close();
         }
 
         private void PopulateDataGrid()
         {
             DatabaseModel.Instance.Instruktores.Load();
-            var source = new BindingSource
-            {
-                DataSource = DatabaseModel.Instance.Instruktores
-                .Select(x => x.Persona)
-                .ToList()
-            };
-            dtgInstructorsDataGrid.DataSource = source;
+            dtgInstructorsDataGrid.DataSource = new BindingSource { DataSource = GridData };
+            dtgInstructorsDataGrid.Columns["Id"].Visible = false;
         }
 
-        private void PopulateComboBoxes()
+        private void OnInputChanged(object sender, EventArgs e)
         {
-            var peopleSource = new BindingSource
+            var selectedGridData = GridData as IEnumerable<InstructorsListData>;
+
+            if (txtName.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Name.ToLower().StartsWith(txtName.Text.ToLower()));
+
+            if (txtSurname.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Surname.ToLower().StartsWith(txtSurname.Text.ToLower()));
+
+            if (txtCourse.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Kurse.ToLower().Contains(txtCourse.Text.ToLower()));
+
+            if (txtBirthYear.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Birthday.HasValue 
+                && x.Birthday.Value.Year.ToString().ToLower().Contains(txtBirthYear.Text.ToLower()));
+
+            dtgInstructorsDataGrid.DataSource = new BindingSource
             {
-                DataSource = DatabaseModel.Instance.Personas
-               .Select(x => new { Id = x.PersonId, Value = x.Emri + " " + x.Mbiemri })
-               .ToList()
-            };
-            cmbPeople.DataSource = peopleSource;
-            cmbPeople.DisplayMember = "Value";
-            cmbPeople.ValueMember = "Id";
+                DataSource = selectedGridData
+            }; 
         }
+
+        private void DtgInstructorsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            OnInstructorSelected();
+        }
+
+        private void BtnClearSearch_Click(object sender, EventArgs e)
+        {
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtCourse.Text = "";
+            txtBirthYear.Text = "";
+        }
+    }
+    public class InstructorsListData
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Kurse { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }

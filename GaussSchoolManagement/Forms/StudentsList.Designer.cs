@@ -49,7 +49,7 @@
             this.dtgStudentsDataGrid.AllowUserToAddRows = false;
             this.dtgStudentsDataGrid.AllowUserToDeleteRows = false;
             this.dtgStudentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgStudentsDataGrid.Location = new System.Drawing.Point(90, 62);
+            this.dtgStudentsDataGrid.Location = new System.Drawing.Point(35, 73);
             this.dtgStudentsDataGrid.MultiSelect = false;
             this.dtgStudentsDataGrid.Name = "dtgStudentsDataGrid";
             this.dtgStudentsDataGrid.ReadOnly = true;
@@ -60,7 +60,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(198, 36);
+            this.txtSurname.Location = new System.Drawing.Point(143, 47);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(100, 20);
             this.txtSurname.TabIndex = 7;
@@ -68,7 +68,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(90, 36);
+            this.txtName.Location = new System.Drawing.Point(35, 47);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(102, 20);
             this.txtName.TabIndex = 8;
@@ -77,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(198, 9);
+            this.label3.Location = new System.Drawing.Point(143, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 5;
@@ -86,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(90, 9);
+            this.label2.Location = new System.Drawing.Point(35, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 6;
@@ -95,7 +95,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(301, 9);
+            this.label4.Location = new System.Drawing.Point(246, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             // txtCourse
             // 
-            this.txtCourse.Location = new System.Drawing.Point(304, 36);
+            this.txtCourse.Location = new System.Drawing.Point(249, 47);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Size = new System.Drawing.Size(100, 20);
             this.txtCourse.TabIndex = 7;
@@ -112,7 +112,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(407, 9);
+            this.label5.Location = new System.Drawing.Point(352, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 5;
@@ -120,7 +120,7 @@
             // 
             // txtBirthYear
             // 
-            this.txtBirthYear.Location = new System.Drawing.Point(410, 36);
+            this.txtBirthYear.Location = new System.Drawing.Point(355, 47);
             this.txtBirthYear.Name = "txtBirthYear";
             this.txtBirthYear.Size = new System.Drawing.Size(100, 20);
             this.txtBirthYear.TabIndex = 7;
@@ -129,7 +129,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(513, 9);
+            this.label6.Location = new System.Drawing.Point(458, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 5;
@@ -137,7 +137,7 @@
             // 
             // txtSchool
             // 
-            this.txtSchool.Location = new System.Drawing.Point(516, 36);
+            this.txtSchool.Location = new System.Drawing.Point(461, 47);
             this.txtSchool.Name = "txtSchool";
             this.txtSchool.Size = new System.Drawing.Size(100, 20);
             this.txtSchool.TabIndex = 7;
@@ -145,7 +145,7 @@
             // 
             // btnClearSearch
             // 
-            this.btnClearSearch.Location = new System.Drawing.Point(496, 289);
+            this.btnClearSearch.Location = new System.Drawing.Point(441, 289);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(154, 23);
             this.btnClearSearch.TabIndex = 1;
@@ -155,7 +155,7 @@
             // 
             // btnStudentOverview
             // 
-            this.btnStudentOverview.Location = new System.Drawing.Point(93, 289);
+            this.btnStudentOverview.Location = new System.Drawing.Point(35, 289);
             this.btnStudentOverview.Name = "btnStudentOverview";
             this.btnStudentOverview.Size = new System.Drawing.Size(140, 23);
             this.btnStudentOverview.TabIndex = 1;

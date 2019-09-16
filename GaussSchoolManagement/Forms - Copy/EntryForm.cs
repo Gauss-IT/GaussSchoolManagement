@@ -100,8 +100,8 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnInstructorOverview_Click(object sender, EventArgs e)
         {
-            //var form = new InstructorOverview();
-            //form.Show();
+            var form = new InstructorOverview();
+            form.Show();
         }
     }
 }

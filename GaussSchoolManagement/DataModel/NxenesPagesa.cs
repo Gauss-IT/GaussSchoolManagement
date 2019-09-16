@@ -9,8 +9,10 @@ namespace GaussSchoolManagement.DataModel
         [Key]
         public int NxenesPageseId { get; set; }
 
+        [ForeignKey("Nxene")]
         public int? NxenesId { get; set; }
 
+        [ForeignKey("Pagesa")]
         public int? PageseId { get; set; }
 
         public virtual Nxene Nxene { get; set; }

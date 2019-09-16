@@ -22,6 +22,7 @@ namespace GaussSchoolManagement.DataModel
         [StringLength(400)]
         public string Pershkrimi { get; set; }
 
+        [ForeignKey("Kurse")]
         public int? KursId { get; set; }
 
         public virtual Kurse Kurse { get; set; }

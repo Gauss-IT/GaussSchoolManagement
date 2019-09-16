@@ -63,6 +63,12 @@
     <Compile Include="Forms\CoursesList.Designer.cs">
       <DependentUpon>CoursesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditInstructorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditInstructorDetails.Designer.cs">
+      <DependentUpon>EditInstructorDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditStudentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,23 +97,11 @@
     <Compile Include="DataModel\Pagesa.cs" />
     <Compile Include="DataModel\Persona.cs" />
     <Compile Include="DataModel\Prinder.cs" />
-    <Compile Include="Forms\InstructorOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstructorOverview.Designer.cs">
-      <DependentUpon>InstructorOverview.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\InstructorsCourses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\InstructorsCourses.Designer.cs">
       <DependentUpon>InstructorsCourses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InstructorsList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstructorsList.Designer.cs">
-      <DependentUpon>InstructorsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ParentsList.cs">
       <SubType>Form</SubType>
@@ -127,6 +121,12 @@
     <Compile Include="Forms\PeopleList.Designer.cs">
       <DependentUpon>PeopleList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InstructorOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorOverview.Designer.cs">
+      <DependentUpon>InstructorOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StudentOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +144,12 @@
     </Compile>
     <Compile Include="Forms\StudentsCourses.Designer.cs">
       <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InstructorsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorsList.Designer.cs">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StudentsList.cs">
       <SubType>Form</SubType>
@@ -171,6 +177,9 @@
     <EmbeddedResource Include="Forms\CoursesList.resx">
       <DependentUpon>CoursesList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditInstructorDetails.resx">
+      <DependentUpon>EditInstructorDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditStudentDetails.resx">
       <DependentUpon>EditStudentDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,9 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstructorsCourses.resx">
       <DependentUpon>InstructorsCourses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InstructorsList.resx">
-      <DependentUpon>InstructorsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParentsList.resx">
       <DependentUpon>ParentsList.cs</DependentUpon>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsCourses.resx">
       <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstructorsList.resx">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>
