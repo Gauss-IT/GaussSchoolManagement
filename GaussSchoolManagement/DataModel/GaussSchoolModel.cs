@@ -5,7 +5,7 @@ namespace GaussSchoolManagement.DataModel
     public partial class GaussSchoolModel : DbContext
     {
         public GaussSchoolModel()
-            : base("name=GaussSchoolEntity")
+            : base(ConnectionStringBuilder.Construct())
         {
         }
 

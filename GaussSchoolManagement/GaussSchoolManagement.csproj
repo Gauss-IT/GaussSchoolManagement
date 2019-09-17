@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\ConnectionStringBuilder.cs" />
     <Compile Include="DataModel\DatabaseModel.cs" />
     <Compile Include="DataModel\InstruktorePagesa.cs" />
     <Compile Include="DataModel\ObservableListSource.cs" />
