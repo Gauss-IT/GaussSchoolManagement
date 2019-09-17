@@ -12,6 +12,7 @@ namespace GaussSchoolManagement.DataModel
         public Pagesa()
         {
             NxenesPagesas = new HashSet<NxenesPagesa>();
+            InstruktorePagesas = new HashSet<InstruktorePagesa>();
         }
 
         [Key]
@@ -34,6 +35,9 @@ namespace GaussSchoolManagement.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NxenesPagesa> NxenesPagesas { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InstruktorePagesa> InstruktorePagesas { get; set; }
 
         public virtual Sherbimet Sherbimet { get; set; }
     }

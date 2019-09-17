@@ -11,6 +11,7 @@ namespace GaussSchoolManagement.DataModel
 
         public virtual DbSet<Instruktore> Instruktores { get; set; }
         public virtual DbSet<InstruktoreKurse> InstruktoreKurses { get; set; }
+        public virtual DbSet<InstruktorePagesa> InstruktorePagesas{ get; set; }
         public virtual DbSet<Kurse> Kurses { get; set; }
         public virtual DbSet<Nxene> Nxenes { get; set; }
         public virtual DbSet<NxenesKurse> NxenesKurses { get; set; }

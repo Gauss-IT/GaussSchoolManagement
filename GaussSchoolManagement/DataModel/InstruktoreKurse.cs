@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GaussSchoolManagement.DataModel
 {
-
     [Table("InstruktoreKurse")]
     public partial class InstruktoreKurse
     {

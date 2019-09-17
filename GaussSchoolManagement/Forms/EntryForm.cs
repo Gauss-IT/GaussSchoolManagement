@@ -32,7 +32,7 @@ namespace GaussSchoolManagement.Forms
             var form = new CoursesList();
             var kurse = DatabaseModel.Instance.Kurses;
             kurse.Load();
-            form.dtgCoursesDatagrid.DataSource = kurse.Local.ToBindingList();
+            form.dtgCourses.DataSource = kurse.Local.ToBindingList();
             form.Show();
         }
 
@@ -98,8 +98,14 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnInstructorOverview_Click(object sender, EventArgs e)
         {
-            //var form = new InstructorOverview();
-            //form.Show();
+            var form = new InstructorOverview();
+            form.Show();
+        }
+
+        private void BtnCourseOverview_Click(object sender, EventArgs e)
+        {
+            var form = new CourseOverview();
+            form.Show();
         }
     }
 }

@@ -79,7 +79,14 @@ namespace GaussSchoolManagement.Forms
                 .Where(x => x.InstruktorId == InstructorID)
                 .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
                 .ToList();
-            lbCourses.DataSource = courses;         
+            lbCourses.DataSource = courses;
+            
+            // Cannot use data.InstruktorePagesas for some reason ?!
+            var payments = DatabaseModel.Instance.InstruktorePagesas
+                .Where(x => x.InstruktorId == InstructorID)
+                .Select(x => x.Pagesa.FormaPageses + " " + x.Pagesa.ShumaPaguar)
+                .ToList();
+            lbPayments.DataSource = payments;
 
             UpdateButtonEnabled();
         }
