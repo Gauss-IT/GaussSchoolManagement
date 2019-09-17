@@ -83,7 +83,7 @@ namespace GaussSchoolManagement.Forms
                 selectedGridData = selectedGridData.Where(x => x.Kurse.ToLower().Contains(txtCourse.Text.ToLower()));
 
             if (txtSchool.Text.Any())
-                selectedGridData = selectedGridData.Where(x => x.School.ToLower().StartsWith(txtSchool.Text.ToLower()));
+                selectedGridData = selectedGridData.Where(x => x.School != null && x.School.ToLower().StartsWith(txtSchool.Text.ToLower()));
 
             if (txtBirthYear.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.Birthday.HasValue 
