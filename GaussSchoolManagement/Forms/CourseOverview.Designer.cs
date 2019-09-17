@@ -37,11 +37,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnFindStudent = new System.Windows.Forms.Button();
             this.btnEditDetails = new System.Windows.Forms.Button();
-            this.lbCourses = new System.Windows.Forms.ListBox();
+            this.lbStudents = new System.Windows.Forms.ListBox();
             this.lblId = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.btnAddCourse = new System.Windows.Forms.Button();
+            this.btnAddStudent = new System.Windows.Forms.Button();
             this.btnRemoveCourse = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -147,16 +147,18 @@
             this.btnEditDetails.UseVisualStyleBackColor = true;
             this.btnEditDetails.Click += new System.EventHandler(this.BtnEditDetails_Click);
             // 
-            // lbCourses
+            // lbStudents
             // 
-            this.lbCourses.FormattingEnabled = true;
-            this.lbCourses.Items.AddRange(new object[] {
-            "Small Basic",
-            "Python"});
-            this.lbCourses.Location = new System.Drawing.Point(25, 28);
-            this.lbCourses.Name = "lbCourses";
-            this.lbCourses.Size = new System.Drawing.Size(256, 56);
-            this.lbCourses.TabIndex = 8;
+            this.lbStudents.FormattingEnabled = true;
+            this.lbStudents.Items.AddRange(new object[] {
+            "Zahir Tairi",
+            "Art Saiti",
+            "Art Limani",
+            "Veton Shabani"});
+            this.lbStudents.Location = new System.Drawing.Point(25, 28);
+            this.lbStudents.Name = "lbStudents";
+            this.lbStudents.Size = new System.Drawing.Size(256, 56);
+            this.lbStudents.TabIndex = 8;
             // 
             // lblId
             // 
@@ -185,14 +187,15 @@
             this.lblName.TabIndex = 0;
             this.lblName.UseMnemonic = false;
             // 
-            // btnAddCourse
+            // btnAddStudent
             // 
-            this.btnAddCourse.Location = new System.Drawing.Point(25, 102);
-            this.btnAddCourse.Name = "btnAddCourse";
-            this.btnAddCourse.Size = new System.Drawing.Size(120, 23);
-            this.btnAddCourse.TabIndex = 3;
-            this.btnAddCourse.Text = "Register new";
-            this.btnAddCourse.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Location = new System.Drawing.Point(25, 102);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(120, 23);
+            this.btnAddStudent.TabIndex = 3;
+            this.btnAddStudent.Text = "Register new";
+            this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.BtnAddStudent_Click);
             // 
             // btnRemoveCourse
             // 
@@ -288,15 +291,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbCourses);
-            this.groupBox2.Controls.Add(this.btnAddCourse);
+            this.groupBox2.Controls.Add(this.lbStudents);
+            this.groupBox2.Controls.Add(this.btnAddStudent);
             this.groupBox2.Controls.Add(this.btnRemoveCourse);
             this.groupBox2.Location = new System.Drawing.Point(417, 33);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(306, 151);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Courses";
+            this.groupBox2.Text = "Students";
             // 
             // groupBox3
             // 
@@ -357,11 +360,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnFindStudent;
         private System.Windows.Forms.Button btnEditDetails;
-        private System.Windows.Forms.ListBox lbCourses;
+        private System.Windows.Forms.ListBox lbStudents;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Button btnAddCourse;
+        private System.Windows.Forms.Button btnAddStudent;
         private System.Windows.Forms.Button btnRemoveCourse;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

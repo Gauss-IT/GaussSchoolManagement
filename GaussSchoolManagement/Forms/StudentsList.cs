@@ -10,7 +10,7 @@ namespace GaussSchoolManagement.Forms
 {    
     public partial class StudentsList : Form
     {
-        private StudentOverview _parent;
+        private Form _parent;
 
         private List<StudentsListData> _gridData;
         private List<StudentsListData> GridData => _gridData ?? (_gridData =
@@ -35,9 +35,10 @@ namespace GaussSchoolManagement.Forms
                     School = z.School
                  }).ToList());
 
-        public StudentsList(StudentOverview studentOverview):this()
+        public StudentsList(Form parent, bool multiSelectEnabled = false):this()
         {
-            _parent = studentOverview;
+            dtgStudentsDataGrid.MultiSelect = multiSelectEnabled;
+            _parent = parent;
         }
 
         public StudentsList()
@@ -48,16 +49,17 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnStudentOverview_Click(object sender, EventArgs e)
         {
-            OnStudentSelected();
+            OnStudentsSelected();
         }
 
-        private void OnStudentSelected()
+        private void OnStudentsSelected()
         {
             if (dtgStudentsDataGrid.SelectedRows.Count == 0)
                 return;
-
-            var id = (int)dtgStudentsDataGrid.SelectedRows[0].Cells[0].Value;            
-            _parent.StudentID = id;
+            var selectedIds = new List<int>();
+            for( var i = 0; i< dtgStudentsDataGrid.SelectedRows.Count; i++)
+               selectedIds.Add((int)dtgStudentsDataGrid.SelectedRows[i].Cells[0].Value);
+            OnStudentsSelected(this, selectedIds);
             _parent.Show();
             Close();
         }
@@ -97,7 +99,7 @@ namespace GaussSchoolManagement.Forms
 
         private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            OnStudentSelected();
+            OnStudentsSelected();
         }
 
         private void BtnClearSearch_Click(object sender, EventArgs e)
@@ -107,6 +109,14 @@ namespace GaussSchoolManagement.Forms
             txtSchool.Text = "";
             txtCourse.Text = "";
             txtBirthYear.Text = "";
+        }
+
+        public event EventHandler<List<int>> StudentsSelected;
+
+        protected virtual void OnStudentsSelected(object sender, List<int> e)
+        {
+            EventHandler<List<int>> handler = StudentsSelected;
+            handler?.Invoke(this, e);
         }
     }
     public class StudentsListData

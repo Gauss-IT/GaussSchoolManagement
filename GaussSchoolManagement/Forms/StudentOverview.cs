@@ -40,6 +40,13 @@ namespace GaussSchoolManagement.Forms
         {
             Hide();
             var form = new StudentsList(this);
+            form.StudentsSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                StudentID = args[0];
+            };
             form.Show();
         }
 

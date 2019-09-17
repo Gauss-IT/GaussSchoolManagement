@@ -78,11 +78,11 @@ namespace GaussSchoolManagement.Forms
             lblYear.Text = data.VitiShkollor;
 
 
-            //var courses = data.NxenesKurses
-            //    .Where(x => x.NxenesId == CourseID)
-            //    .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
-            //    .ToList();
-            //lbCourses.DataSource = courses;
+            var students = data.NxenesKurses
+                .Where(x => x.KursId == CourseID)
+                .Select(x => x.Nxene.Persona.Emri + " " + x.Nxene.Persona.Mbiemri)
+                .ToList();
+            lbStudents.DataSource = students;
 
             //var payments = data.NxenesPagesas
             //    .Where(x => x.NxenesId == CourseID)
@@ -146,6 +146,35 @@ namespace GaussSchoolManagement.Forms
             while (previousId > CourseIDs.Min() && !CourseIDs.Contains(previousId))
                 previousId--;
             CourseID = previousId;
+        }
+
+        private void BtnAddStudent_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new StudentsList(this, true);
+            form.StudentsSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                AddStudentsToCourse(args);
+            };
+            form.Show();
+        }
+
+        private void AddStudentsToCourse(List<int> studentIds)
+        {
+            var newRegistrations = studentIds.Select(x => new NxenesKurse { KursId = CourseID, NxenesId = x });
+            DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
+            DatabaseModel.Instance.SaveChanges();
+
+            var students = DatabaseModel.Instance.NxenesKurses
+               .Where(x => x.KursId == CourseID)
+               .Select(x => x.Nxene.Persona.Emri + " " + x.Nxene.Persona.Mbiemri)
+               .ToList();
+            lbStudents.DataSource = students;
+
+            MessageBox.Show($"Successfully added {studentIds.Count} students");
         }
     }
 }
