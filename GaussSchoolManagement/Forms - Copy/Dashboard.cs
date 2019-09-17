@@ -10,19 +10,12 @@ namespace GaussSchoolManagement.Forms
     {
         public Dashboard()
         {
-            InitializeComponent();
-            DatabaseModel.Instance.Personas.Load();
-           
+            InitializeComponent();            
         }
         
         private void BtnEditPerson_Click(object sender, EventArgs e)
         {
             var form = new StudentOverview();
-            form.Show();
-        }
-        private void BtnInstructorOverview_Click(object sender, EventArgs e)
-        {
-            var form = new InstructorOverview();
             form.Show();
         }
 
@@ -31,7 +24,5 @@ namespace GaussSchoolManagement.Forms
             var form = new EntryForm();
             form.Show();
         }
-
-        
     }
 }

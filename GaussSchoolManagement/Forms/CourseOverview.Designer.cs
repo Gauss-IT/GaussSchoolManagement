@@ -1,6 +1,6 @@
 ﻿namespace GaussSchoolManagement.Forms
 {
-    partial class StudentOverview
+    partial class CourseOverview
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCode1 = new System.Windows.Forms.Label();
+            this.lblCourseName1 = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -39,18 +39,18 @@
             this.btnEditDetails = new System.Windows.Forms.Button();
             this.lbCourses = new System.Windows.Forms.ListBox();
             this.lblId = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
             this.btnAddCourse = new System.Windows.Forms.Button();
             this.btnRemoveCourse = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLevel = new System.Windows.Forms.Label();
+            this.lblLevel1 = new System.Windows.Forms.Label();
+            this.lblYear1 = new System.Windows.Forms.Label();
+            this.lblYear = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbPayments = new System.Windows.Forms.ListBox();
@@ -59,23 +59,23 @@
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblCode1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.lblCode1.AutoSize = true;
+            this.lblCode1.Location = new System.Drawing.Point(32, 39);
+            this.lblCode1.Name = "lblCode1";
+            this.lblCode1.Size = new System.Drawing.Size(32, 13);
+            this.lblCode1.TabIndex = 0;
+            this.lblCode1.Text = "Code";
             // 
-            // label3
+            // lblCourseName1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(169, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Surname";
+            this.lblCourseName1.AutoSize = true;
+            this.lblCourseName1.Location = new System.Drawing.Point(169, 39);
+            this.lblCourseName1.Name = "lblCourseName1";
+            this.lblCourseName1.Size = new System.Drawing.Size(35, 13);
+            this.lblCourseName1.TabIndex = 0;
+            this.lblCourseName1.Text = "Name";
             // 
             // btnNew
             // 
@@ -123,9 +123,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(165, 104);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Student Id";
+            this.label8.Text = "Course ID";
             // 
             // btnFindStudent
             // 
@@ -133,7 +133,7 @@
             this.btnFindStudent.Name = "btnFindStudent";
             this.btnFindStudent.Size = new System.Drawing.Size(284, 23);
             this.btnFindStudent.TabIndex = 3;
-            this.btnFindStudent.Text = "Find student";
+            this.btnFindStudent.Text = "Find course";
             this.btnFindStudent.UseVisualStyleBackColor = true;
             this.btnFindStudent.Click += new System.EventHandler(this.BtnFindStudent_Click);
             // 
@@ -167,23 +167,23 @@
             this.lblId.TabIndex = 0;
             this.lblId.UseMnemonic = false;
             // 
+            // lblCode
+            // 
+            this.lblCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCode.Location = new System.Drawing.Point(35, 64);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(113, 20);
+            this.lblCode.TabIndex = 0;
+            this.lblCode.UseMnemonic = false;
+            // 
             // lblName
             // 
             this.lblName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblName.Location = new System.Drawing.Point(35, 64);
+            this.lblName.Location = new System.Drawing.Point(172, 64);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(113, 20);
             this.lblName.TabIndex = 0;
             this.lblName.UseMnemonic = false;
-            // 
-            // lblSurname
-            // 
-            this.lblSurname.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSurname.Location = new System.Drawing.Point(172, 64);
-            this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(113, 20);
-            this.lblSurname.TabIndex = 0;
-            this.lblSurname.UseMnemonic = false;
             // 
             // btnAddCourse
             // 
@@ -232,14 +232,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.lblLevel);
+            this.groupBox1.Controls.Add(this.lblCode);
+            this.groupBox1.Controls.Add(this.lblLevel1);
+            this.groupBox1.Controls.Add(this.lblYear1);
+            this.groupBox1.Controls.Add(this.lblCode1);
+            this.groupBox1.Controls.Add(this.lblYear);
+            this.groupBox1.Controls.Add(this.lblCourseName1);
             this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblSurname);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnEditDetails);
             this.groupBox1.Controls.Add(this.btnNew);
@@ -248,43 +248,43 @@
             this.groupBox1.Size = new System.Drawing.Size(314, 214);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Student info";
+            this.groupBox1.Text = "Course Info";
             // 
-            // label6
+            // lblLevel
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(35, 120);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 20);
-            this.label6.TabIndex = 0;
-            this.label6.UseMnemonic = false;
+            this.lblLevel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblLevel.Location = new System.Drawing.Point(35, 120);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(113, 20);
+            this.lblLevel.TabIndex = 0;
+            this.lblLevel.UseMnemonic = false;
             // 
-            // label5
+            // lblLevel1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Class";
+            this.lblLevel1.AutoSize = true;
+            this.lblLevel1.Location = new System.Drawing.Point(32, 95);
+            this.lblLevel1.Name = "lblLevel1";
+            this.lblLevel1.Size = new System.Drawing.Size(33, 13);
+            this.lblLevel1.TabIndex = 0;
+            this.lblLevel1.Text = "Level";
             // 
-            // label4
+            // lblYear1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Age";
+            this.lblYear1.AutoSize = true;
+            this.lblYear1.Location = new System.Drawing.Point(169, 95);
+            this.lblYear1.Name = "lblYear1";
+            this.lblYear1.Size = new System.Drawing.Size(29, 13);
+            this.lblYear1.TabIndex = 0;
+            this.lblYear1.Text = "Year";
             // 
-            // label2
+            // lblYear
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(172, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 20);
-            this.label2.TabIndex = 0;
-            this.label2.UseMnemonic = false;
+            this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblYear.Location = new System.Drawing.Point(172, 120);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(113, 20);
+            this.lblYear.TabIndex = 0;
+            this.lblYear.UseMnemonic = false;
             // 
             // groupBox2
             // 
@@ -322,7 +322,7 @@
             this.lbPayments.Size = new System.Drawing.Size(256, 121);
             this.lbPayments.TabIndex = 8;
             // 
-            // StudentOverview
+            // CourseOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -335,8 +335,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
-            this.Name = "StudentOverview";
-            this.Text = "Student Overview";
+            this.Name = "CourseOverview";
+            this.Text = "Course Overview";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -348,8 +348,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCode1;
+        private System.Windows.Forms.Label lblCourseName1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnPrevious;
@@ -359,18 +359,18 @@
         private System.Windows.Forms.Button btnEditDetails;
         private System.Windows.Forms.ListBox lbCourses;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Button btnAddCourse;
         private System.Windows.Forms.Button btnRemoveCourse;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblLevel;
+        private System.Windows.Forms.Label lblLevel1;
+        private System.Windows.Forms.Label lblYear1;
+        private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox lbPayments;

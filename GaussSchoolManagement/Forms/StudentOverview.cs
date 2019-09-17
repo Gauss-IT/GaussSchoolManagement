@@ -75,11 +75,19 @@ namespace GaussSchoolManagement.Forms
             lblName.Text = data.Persona.Emri;
             lblSurname.Text = data.Persona.Mbiemri;
 
-            var kurse = data.NxenesKurses
+            var courses = data.NxenesKurses
                 .Where(x => x.NxenesId == StudentID)
                 .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
                 .ToList();
-            lbCourses.DataSource = kurse;
+            lbCourses.DataSource = courses;
+
+            var payments = data.NxenesPagesas
+                .Where(x => x.NxenesId == StudentID)
+                .Select(x => x.Pagesa.FormaPageses + " " + x.Pagesa.ShumaPaguar)
+                .ToList();
+            lbPayments.DataSource = payments;
+
+
             UpdateButtonEnabled();
         }
 
@@ -110,12 +118,13 @@ namespace GaussSchoolManagement.Forms
             if (!StudentIDs.Contains(StudentID))
                 return;
             var student = DatabaseModel.Instance.Nxenes.First(x=>x.NxenesId == StudentID);
-            DatabaseModel.Instance.Personas.Remove(student.Persona);
-            DatabaseModel.Instance.Prinders.Remove(student.Prinder);
             DatabaseModel.Instance.Nxenes.Remove(student);
             DatabaseModel.Instance.SaveChanges();
             UpdateStudentIds();
-            IncrementStudentId();
+            if (StudentIDs.Contains(StudentID + 1))
+                IncrementStudentId();
+            else
+                DecrementStudentId();
             UpdateButtonEnabled();
         }
 

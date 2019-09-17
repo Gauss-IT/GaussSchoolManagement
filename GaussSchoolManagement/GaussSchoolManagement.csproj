@@ -56,12 +56,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel\DatabaseModel.cs" />
+    <Compile Include="DataModel\InstruktorePagesa.cs" />
     <Compile Include="DataModel\ObservableListSource.cs" />
-    <Compile Include="Forms\CoursesList.cs">
+    <Compile Include="Forms\EditInstructorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CoursesList.Designer.cs">
-      <DependentUpon>CoursesList.cs</DependentUpon>
+    <Compile Include="Forms\EditInstructorDetails.Designer.cs">
+      <DependentUpon>EditInstructorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditCourseDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCourseDetails.Designer.cs">
+      <DependentUpon>EditCourseDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditStudentDetails.cs">
       <SubType>Form</SubType>
@@ -91,23 +98,11 @@
     <Compile Include="DataModel\Pagesa.cs" />
     <Compile Include="DataModel\Persona.cs" />
     <Compile Include="DataModel\Prinder.cs" />
-    <Compile Include="Forms\InstructorOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstructorOverview.Designer.cs">
-      <DependentUpon>InstructorOverview.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\InstructorsCourses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\InstructorsCourses.Designer.cs">
       <DependentUpon>InstructorsCourses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InstructorsList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstructorsList.Designer.cs">
-      <DependentUpon>InstructorsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ParentsList.cs">
       <SubType>Form</SubType>
@@ -127,6 +122,18 @@
     <Compile Include="Forms\PeopleList.Designer.cs">
       <DependentUpon>PeopleList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InstructorOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorOverview.Designer.cs">
+      <DependentUpon>InstructorOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CourseOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CourseOverview.Designer.cs">
+      <DependentUpon>CourseOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StudentOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +151,18 @@
     </Compile>
     <Compile Include="Forms\StudentsCourses.Designer.cs">
       <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InstructorsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructorsList.Designer.cs">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CoursesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CoursesList.Designer.cs">
+      <DependentUpon>CoursesList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StudentsList.cs">
       <SubType>Form</SubType>
@@ -168,8 +187,11 @@
     <Compile Include="DataModel\Sherbimet.cs" />
     <Compile Include="DataModel\Shkolla.cs" />
     <Compile Include="DataModel\sysdiagram.cs" />
-    <EmbeddedResource Include="Forms\CoursesList.resx">
-      <DependentUpon>CoursesList.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditInstructorDetails.resx">
+      <DependentUpon>EditInstructorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCourseDetails.resx">
+      <DependentUpon>EditCourseDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditStudentDetails.resx">
       <DependentUpon>EditStudentDetails.cs</DependentUpon>
@@ -186,9 +208,6 @@
     <EmbeddedResource Include="Forms\InstructorsCourses.resx">
       <DependentUpon>InstructorsCourses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InstructorsList.resx">
-      <DependentUpon>InstructorsList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParentsList.resx">
       <DependentUpon>ParentsList.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PeopleList.resx">
       <DependentUpon>PeopleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CourseOverview.resx">
+      <DependentUpon>CourseOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentOverview.resx">
       <DependentUpon>StudentOverview.cs</DependentUpon>
@@ -209,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsCourses.resx">
       <DependentUpon>StudentsCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstructorsList.resx">
+      <DependentUpon>InstructorsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CoursesList.resx">
+      <DependentUpon>CoursesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsList.resx">
       <DependentUpon>StudentsList.cs</DependentUpon>

@@ -9,8 +9,10 @@ namespace GaussSchoolManagement.DataModel
         [Key]
         public int NxenesKursId { get; set; }
 
+        [ForeignKey("Kurse")]
         public int? KursId { get; set; }
 
+        [ForeignKey("Nxene")]
         public int? NxenesId { get; set; }
 
         public virtual Kurse Kurse { get; set; }

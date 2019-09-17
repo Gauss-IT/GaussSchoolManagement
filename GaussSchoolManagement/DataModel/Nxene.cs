@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GaussSchoolManagement.DataModel
 {
@@ -15,13 +16,16 @@ namespace GaussSchoolManagement.DataModel
         [Key]
         public int NxenesId { get; set; }
 
+        [ForeignKey("Shkolla")]
         public int? ShkollaId { get; set; }
 
         [StringLength(50)]
         public string Klasa { get; set; }
 
+        [ForeignKey("Prinder")]
         public int? PrindId { get; set; }
 
+        [ForeignKey("Persona")]
         public int? PersonId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

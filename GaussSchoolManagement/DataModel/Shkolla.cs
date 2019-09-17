@@ -13,6 +13,7 @@ namespace GaussSchoolManagement.DataModel
             Nxenes = new HashSet<Nxene>();
         }
 
+        [Key]
         public int ShkollaId { get; set; }
 
         [StringLength(50)]

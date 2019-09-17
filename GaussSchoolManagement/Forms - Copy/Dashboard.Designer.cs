@@ -30,7 +30,6 @@
         {
             this.btnStudentOverview = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnInstructorOverview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStudentOverview
@@ -53,23 +52,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
-            // btnInstructorOverview
-            // 
-            this.btnInstructorOverview.Location = new System.Drawing.Point(57, 130);
-            this.btnInstructorOverview.Name = "btnInstructorOverview";
-            this.btnInstructorOverview.Size = new System.Drawing.Size(114, 64);
-            this.btnInstructorOverview.TabIndex = 7;
-            this.btnInstructorOverview.Text = "Instructor overview";
-            this.btnInstructorOverview.UseVisualStyleBackColor = true;
-            this.btnInstructorOverview.Click += new System.EventHandler(this.BtnInstructorOverview_Click);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnInstructorOverview);
             this.Controls.Add(this.btnStudentOverview);
             this.Name = "Dashboard";
             this.Text = "Gauss School Management";
@@ -80,7 +68,6 @@
         #endregion
         private System.Windows.Forms.Button btnStudentOverview;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnInstructorOverview;
     }
 }
 

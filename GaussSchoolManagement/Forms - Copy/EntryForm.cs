@@ -1,6 +1,7 @@
 ﻿using GaussSchoolManagement.DataModel;
 using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GaussSchoolManagement.Forms
@@ -15,42 +16,43 @@ namespace GaussSchoolManagement.Forms
         private void BtnEditSchools_Click(object sender, EventArgs e)
         {
             var form = new SchoolsList();
-            var shkolla = DatabaseModel.Instance.Shkollas;
-            shkolla.Load();
-            form.dtgShoolsDataGrid.DataSource = shkolla.Local.ToBindingList();
+            DatabaseModel.Instance.Shkollas.Load();
+            form.dtgShoolsDataGrid.DataSource = 
+                DatabaseModel.Instance.Shkollas.Local.ToBindingList();
             form.Show();
         }
 
         private void BtnEditPeople_Click(object sender, EventArgs e)
         {
             var form = new PeopleList();
+            
             form.Show();
         }
 
         private void BtnEditCourse_Click(object sender, EventArgs e)
         {
             var form = new CoursesList();
-            var kurse = DatabaseModel.Instance.Kurses;
-            kurse.Load();
-            form.dtgCourses.DataSource = kurse.Local.ToBindingList();
+            DatabaseModel.Instance.Kurses.Load();
+            form.dtgCoursesDatagrid.DataSource = 
+                DatabaseModel.Instance.Kurses.Local.ToBindingList();
             form.Show();
         }
 
         private void BtnEditPayments_Click(object sender, EventArgs e)
         {
             var form = new PaymentList();
-            var pagesa = DatabaseModel.Instance.Pagesas;
-            pagesa.Load();
-            form.dtgPaymentsDataGrid.DataSource = pagesa.Local.ToBindingList();
+            DatabaseModel.Instance.Pagesas.Load();
+            form.dtgPaymentsDataGrid.DataSource = 
+                DatabaseModel.Instance.Pagesas.Local.ToBindingList();
             form.Show();
         }
 
         private void BtnEditServices_Click(object sender, EventArgs e)
         {
             var form = new ServicesList();
-            var sherbimet = DatabaseModel.Instance.Sherbimets;
-            sherbimet.Load();
-            form.dtgServicesDataGrid.DataSource = sherbimet.Local.ToBindingList();
+            DatabaseModel.Instance.Sherbimets.Load();
+            form.dtgServicesDataGrid.DataSource =
+                DatabaseModel.Instance.Sherbimets.Local.ToBindingList();
             form.Show();
         }
 
@@ -99,12 +101,6 @@ namespace GaussSchoolManagement.Forms
         private void BtnInstructorOverview_Click(object sender, EventArgs e)
         {
             var form = new InstructorOverview();
-            form.Show();
-        }
-
-        private void BtnCourseOverview_Click(object sender, EventArgs e)
-        {
-            var form = new CourseOverview();
             form.Show();
         }
     }
