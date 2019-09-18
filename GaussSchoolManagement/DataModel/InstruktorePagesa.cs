@@ -7,7 +7,7 @@ namespace GaussSchoolManagement.DataModel
     public partial class InstruktorePagesa
     {
         [Key]
-        public int InstruktorePagesaId { get; set; }
+        public int InstruktorPagesaId { get; set; }
 
         [ForeignKey("Instruktore")]
         public int? InstruktorId { get; set; }

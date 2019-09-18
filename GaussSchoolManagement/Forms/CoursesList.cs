@@ -10,7 +10,7 @@ namespace GaussSchoolManagement.Forms
 {    
     public partial class CoursesList : Form
     {
-        private CourseOverview _parent;
+        private Form _parent;
 
         private List<CoursesListData> _gridData;
         private List<CoursesListData> GridData => _gridData ?? (_gridData =
@@ -35,6 +35,12 @@ namespace GaussSchoolManagement.Forms
                      Description = z.Description
                  }).ToList());
 
+        public CoursesList(Form parent, bool multiSelectEnabled = false) : this()
+        {
+            dtgCourses.MultiSelect = multiSelectEnabled;
+            _parent = parent;
+        }
+
         public CoursesList(CourseOverview studentOverview):this()
         {
             _parent = studentOverview;
@@ -48,19 +54,32 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnStudentOverview_Click(object sender, EventArgs e)
         {
-            OnStudentSelected();
+            OnCoursesSelected();
         }
 
-        private void OnStudentSelected()
+        private void OnCoursesSelected()
         {
             if (dtgCourses.SelectedRows.Count == 0)
                 return;
-
-            var id = (int)dtgCourses.SelectedRows[0].Cells[0].Value;            
-            _parent.CourseID = id;
+            var selectedIds = new List<int>();
+            for (var i = 0; i < dtgCourses.SelectedRows.Count; i++)
+                selectedIds.Add((int)dtgCourses.SelectedRows[i].Cells[0].Value);
+            OnCoursesSelected(this, selectedIds);
             _parent.Show();
             Close();
         }
+
+        //TO BE DELETED
+        //private void OnStudentSelected()
+        //{
+        //    if (dtgCourses.SelectedRows.Count == 0)
+        //        return;
+
+        //    var id = (int)dtgCourses.SelectedRows[0].Cells[0].Value;            
+        //    _parent.CourseID = id;
+        //    _parent.Show();
+        //    Close();
+        //}
 
         private void PopulateDataGrid()
         {
@@ -102,7 +121,7 @@ namespace GaussSchoolManagement.Forms
 
         private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            OnStudentSelected();
+            OnCoursesSelected();
         }
 
         private void BtnClearSearch_Click(object sender, EventArgs e)
@@ -112,6 +131,14 @@ namespace GaussSchoolManagement.Forms
             txtDescription.Text = "";
             txtLevel.Text = "";
             txtYear.Text = "";
+        }
+
+        public event EventHandler<List<int>> CoursesSelected;
+
+        protected virtual void OnCoursesSelected(object sender, List<int> e)
+        {
+            EventHandler<List<int>> handler = CoursesSelected;
+            handler?.Invoke(this, e);
         }
     }
     public class CoursesListData

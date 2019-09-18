@@ -193,6 +193,7 @@
             this.btnAddCourse.TabIndex = 3;
             this.btnAddCourse.Text = "Register new";
             this.btnAddCourse.UseVisualStyleBackColor = true;
+            this.btnAddCourse.Click += new System.EventHandler(this.BtnAddCourse_Click);
             // 
             // btnRemoveCourse
             // 

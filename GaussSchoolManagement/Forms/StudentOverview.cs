@@ -151,5 +151,34 @@ namespace GaussSchoolManagement.Forms
                 previousId--;
             StudentID = previousId;
         }
+
+        private void BtnAddCourse_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new CoursesList(this, true);
+            form.CoursesSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                AddCoursesToStudent(args);
+            };
+            form.Show();
+        }
+
+        private void AddCoursesToStudent(List<int> courseIds)
+        {
+            var newRegistrations = courseIds.Select(x => new NxenesKurse { NxenesId = StudentID, KursId = x });
+            DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
+            DatabaseModel.Instance.SaveChanges();
+
+            var courses = DatabaseModel.Instance.NxenesKurses
+               .Where(x => x.NxenesId == StudentID)
+               .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
+               .ToList();
+            lbCourses.DataSource = courses;
+
+            MessageBox.Show($"Successfully added {courseIds.Count} courses");
+        }
     }
 }

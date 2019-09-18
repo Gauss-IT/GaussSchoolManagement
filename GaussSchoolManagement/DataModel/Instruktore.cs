@@ -11,6 +11,7 @@ namespace GaussSchoolManagement.DataModel
         public Instruktore()
         {
             InstruktoreKurses = new HashSet<InstruktoreKurse>();
+            InstruktorePagesas = new HashSet<InstruktorePagesa>();
         }
 
         [Key]
@@ -21,6 +22,9 @@ namespace GaussSchoolManagement.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InstruktoreKurse> InstruktoreKurses { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InstruktorePagesa> InstruktorePagesas { get; set; }
 
         public virtual Persona Persona { get; set; }
     }

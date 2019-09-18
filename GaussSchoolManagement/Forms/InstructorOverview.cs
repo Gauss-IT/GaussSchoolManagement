@@ -81,8 +81,8 @@ namespace GaussSchoolManagement.Forms
                 .ToList();
             lbCourses.DataSource = courses;
             
-            // Cannot use data.InstruktorePagesas for some reason ?!
-            var payments = DatabaseModel.Instance.InstruktorePagesas
+            
+            var payments = data.InstruktorePagesas
                 .Where(x => x.InstruktorId == InstructorID)
                 .Select(x => x.Pagesa.FormaPageses + " " + x.Pagesa.ShumaPaguar)
                 .ToList();
@@ -118,8 +118,13 @@ namespace GaussSchoolManagement.Forms
             if (!InstructorIDs.Contains(InstructorID))
                 return;
             var instructor = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == InstructorID);
+            //var instructorKurse = DatabaseModel.Instance.InstruktoreKurses.Where(x => x.InstruktorId == InstructorID);
+            //var instructorPagesa = DatabaseModel.Instance.InstruktorePagesas.Where(x => x.InstruktorId == InstructorID);
+            //DatabaseModel.Instance.InstruktorePagesas.RemoveRange(instructorPagesa);
+            //DatabaseModel.Instance.InstruktoreKurses.RemoveRange(instructorKurse);
             DatabaseModel.Instance.Instruktores.Remove(instructor);
             DatabaseModel.Instance.SaveChanges();
+
             UpdateInstructorIds();
             if(InstructorIDs.Contains(InstructorID + 1))
                 IncrementInstructorId();
@@ -143,6 +148,35 @@ namespace GaussSchoolManagement.Forms
             while (previousId > InstructorIDs.Min() && !InstructorIDs.Contains(previousId))
                 previousId--;
             InstructorID = previousId;
+        }
+
+        private void BtnAddCourse_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new CoursesList(this, true);
+            form.CoursesSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                AddCoursesToInstructor(args);
+            };
+            form.Show();
+        }
+
+        private void AddCoursesToInstructor(List<int> courseIds)
+        {
+            var newInsturctorCourses = courseIds.Select(x => new InstruktoreKurse { InstruktorId = InstructorID, KursId = x });
+            DatabaseModel.Instance.InstruktoreKurses.AddRange(newInsturctorCourses);
+            DatabaseModel.Instance.SaveChanges();
+
+            var courses = DatabaseModel.Instance.InstruktoreKurses
+               .Where(x => x.InstruktorId == InstructorID)
+               .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
+               .ToList();
+            lbCourses.DataSource = courses;
+
+            MessageBox.Show($"Successfully added {courseIds.Count} courses");
         }
     }
 }

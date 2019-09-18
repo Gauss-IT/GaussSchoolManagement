@@ -32,6 +32,10 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
-        
+        private void BtnCourseOverview_Click(object sender, EventArgs e)
+        {
+            var form = new CourseOverview();
+            form.Show();
+        }
     }
 }
