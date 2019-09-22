@@ -23,14 +23,21 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnAddStudentsPayments_Click(object sender, EventArgs e)
         {
-            var nxenesPagesa = new NxenesPagesa
+            try
             {
-                NxenesId = ((dynamic)cmbStudents.SelectedItem).Id,
-                PageseId = ((dynamic)cmbPayments.SelectedItem).Id
-            };
-            DatabaseModel.Instance.NxenesPagesas.Add(nxenesPagesa);
-            DatabaseModel.Instance.SaveChanges();
-            PopulateDataGrid();
+                var nxenesPagesa = new NxenesPagesa
+                {
+                    NxenesId = ((dynamic)cmbStudents.SelectedItem).Id,
+                    PageseId = ((dynamic)cmbPayments.SelectedItem).Id
+                };
+                DatabaseModel.Instance.NxenesPagesas.Add(nxenesPagesa);
+                DatabaseModel.Instance.SaveChanges();
+                PopulateDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateDataGrid()

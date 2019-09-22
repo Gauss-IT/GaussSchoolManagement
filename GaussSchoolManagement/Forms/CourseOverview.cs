@@ -123,15 +123,27 @@ namespace GaussSchoolManagement.Forms
         {
             if (!CourseIDs.Contains(CourseID))
                 return;
-            var course = DatabaseModel.Instance.Kurses.First(x => x.KursId == CourseID);
-            DatabaseModel.Instance.Kurses.Remove(course);
-            DatabaseModel.Instance.SaveChanges();
-            UpdateCourseIDs();
-            if (CourseIDs.Contains(CourseID + 1))
-                IncrementCourseID();
-            else
-                DecrementCourseID();
-            UpdateButtonEnabled();
+
+            try
+            {
+                var course = DatabaseModel.Instance.Kurses.First(x => x.KursId == CourseID);
+                DatabaseModel.Instance.Kurses.Remove(course);
+                DatabaseModel.Instance.SaveChanges();
+                MessageBox.Show($"The course {course.EmriKursit} was removed successfully!");
+                UpdateCourseIDs();
+
+                if (CourseIDs.Contains(CourseID + 1))
+                    IncrementCourseID();
+                else
+                    DecrementCourseID();
+                UpdateButtonEnabled();
+            }
+            catch
+            {
+                MessageBox.Show($"There was an error with the database transaction!");
+            }
+
+            
         }
 
         private void IncrementCourseID()
@@ -154,6 +166,7 @@ namespace GaussSchoolManagement.Forms
         private void BtnAddStudent_Click(object sender, EventArgs e)
         {
             Hide();
+
             var form = new StudentsList(this, true);
             form.StudentsSelected += (s, args) =>
             {
@@ -168,6 +181,7 @@ namespace GaussSchoolManagement.Forms
 
         private void AddStudentsToCourse(List<int> studentIds)
         {
+            try { 
             var newRegistrations = studentIds.Select(x => new NxenesKurse { KursId = CourseID, NxenesId = x });
             DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
             DatabaseModel.Instance.SaveChanges();
@@ -179,6 +193,16 @@ namespace GaussSchoolManagement.Forms
             lbStudents.DataSource = students;
 
             MessageBox.Show($"Successfully added {studentIds.Count} students");
+            }
+            catch 
+            {
+                MessageBox.Show("There was an error");
+            }
+        }
+
+        private void CourseOverview_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

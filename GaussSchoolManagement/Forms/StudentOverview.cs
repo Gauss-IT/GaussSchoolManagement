@@ -119,6 +119,7 @@ namespace GaussSchoolManagement.Forms
         {
             if (!StudentIDs.Contains(StudentID))
                 return;
+            try { 
             var student = DatabaseModel.Instance.Nxenes.First(x=>x.NxenesId == StudentID);
             var studentCourse = DatabaseModel.Instance.NxenesKurses.Where(x=>x.NxenesId == StudentID);
             var studentPayments = DatabaseModel.Instance.NxenesPagesas.Where(x => x.NxenesId == StudentID);
@@ -126,12 +127,19 @@ namespace GaussSchoolManagement.Forms
             DatabaseModel.Instance.NxenesKurses.RemoveRange(studentCourse);
             DatabaseModel.Instance.Nxenes.Remove(student);
             DatabaseModel.Instance.SaveChanges();
+                MessageBox.Show($"This student {student.Persona.Emri} was removed successfully!");
             UpdateStudentIds();
             if (StudentIDs.Contains(StudentID + 1))
                 IncrementStudentId();
             else
                 DecrementStudentId();
             UpdateButtonEnabled();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error with the database transaction!");
+                
+            }
         }
 
         private void IncrementStudentId()
@@ -168,23 +176,37 @@ namespace GaussSchoolManagement.Forms
 
         private void AddCoursesToStudent(List<int> StudentIds)
         {
-            var newRegistrations = StudentIds.Select(x => new NxenesKurse { NxenesId = StudentID, KursId = x });
-            DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
-            DatabaseModel.Instance.SaveChanges();
+            try
+            {
+                var newRegistrations = StudentIds.Select(x => new NxenesKurse { NxenesId = StudentID, KursId = x });
+                DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
+                DatabaseModel.Instance.SaveChanges();
 
-            PopulateCourseDataGrid();
+                PopulateCourseDataGrid();
 
-            MessageBox.Show($"Successfully added {StudentIds.Count} courses");
+                MessageBox.Show($"Successfully added {StudentIds.Count} courses");
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void BtnRemoveCourse_Click(object sender, EventArgs e)
         {
-            var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
-            var course = DatabaseModel.Instance.NxenesKurses.First(x => x.NxenesKursId == courseId);
-            DatabaseModel.Instance.NxenesKurses.Remove(course);
-            DatabaseModel.Instance.SaveChanges();
+            try
+            {
+                var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
+                var course = DatabaseModel.Instance.NxenesKurses.First(x => x.NxenesKursId == courseId);
+                DatabaseModel.Instance.NxenesKurses.Remove(course);
+                DatabaseModel.Instance.SaveChanges();
 
-            PopulateCourseDataGrid();
+                PopulateCourseDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateCourseDataGrid()
