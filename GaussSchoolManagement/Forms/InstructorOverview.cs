@@ -180,6 +180,7 @@ namespace GaussSchoolManagement.Forms
                 new
                 {
                     Id = x.InstruktorKursId,
+                    Code = x.Kurse.ShifraKursit,
                     Name = x.Kurse.EmriKursit,
                     SchoolYear = x.Kurse.VitiShkollor,
                 }).ToList();

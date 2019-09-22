@@ -187,6 +187,7 @@ namespace GaussSchoolManagement.Forms
                 new
                 {
                     Id = x.NxenesKursId,
+                    Code = x.Kurse.ShifraKursit,
                     Name = x.Kurse.EmriKursit,
                     SchoolYear = x.Kurse.VitiShkollor,
                 })

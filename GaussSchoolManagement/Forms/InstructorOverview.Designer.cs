@@ -127,7 +127,7 @@
             // 
             // btnFindInstructor
             // 
-            this.btnFindInstructor.Location = new System.Drawing.Point(46, 155);
+            this.btnFindInstructor.Location = new System.Drawing.Point(46, 190);
             this.btnFindInstructor.Name = "btnFindInstructor";
             this.btnFindInstructor.Size = new System.Drawing.Size(284, 23);
             this.btnFindInstructor.TabIndex = 3;
@@ -174,7 +174,7 @@
             // 
             // btnAddCourse
             // 
-            this.btnAddCourse.Location = new System.Drawing.Point(25, 122);
+            this.btnAddCourse.Location = new System.Drawing.Point(28, 157);
             this.btnAddCourse.Name = "btnAddCourse";
             this.btnAddCourse.Size = new System.Drawing.Size(120, 23);
             this.btnAddCourse.TabIndex = 3;
@@ -184,7 +184,7 @@
             // 
             // btnRemoveCourse
             // 
-            this.btnRemoveCourse.Location = new System.Drawing.Point(161, 122);
+            this.btnRemoveCourse.Location = new System.Drawing.Point(250, 157);
             this.btnRemoveCourse.Name = "btnRemoveCourse";
             this.btnRemoveCourse.Size = new System.Drawing.Size(120, 23);
             this.btnRemoveCourse.TabIndex = 3;
@@ -194,7 +194,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(113, 163);
+            this.button1.Location = new System.Drawing.Point(158, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 3;
@@ -203,7 +203,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(28, 163);
+            this.button2.Location = new System.Drawing.Point(28, 172);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 23);
             this.button2.TabIndex = 3;
@@ -212,7 +212,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(198, 163);
+            this.button3.Location = new System.Drawing.Point(287, 172);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(83, 23);
             this.button3.TabIndex = 3;
@@ -228,7 +228,7 @@
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnEditDetails);
             this.groupBox1.Controls.Add(this.btnNew);
-            this.groupBox1.Location = new System.Drawing.Point(46, 220);
+            this.groupBox1.Location = new System.Drawing.Point(46, 246);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(314, 214);
             this.groupBox1.TabIndex = 9;
@@ -242,7 +242,7 @@
             this.groupBox2.Controls.Add(this.btnRemoveCourse);
             this.groupBox2.Location = new System.Drawing.Point(417, 33);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 151);
+            this.groupBox2.Size = new System.Drawing.Size(385, 193);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Courses";
@@ -253,9 +253,9 @@
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Location = new System.Drawing.Point(417, 220);
+            this.groupBox3.Location = new System.Drawing.Point(417, 246);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(306, 214);
+            this.groupBox3.Size = new System.Drawing.Size(385, 214);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Payments";
@@ -266,7 +266,7 @@
             this.dtgCourses.Location = new System.Drawing.Point(28, 19);
             this.dtgCourses.Name = "dtgCourses";
             this.dtgCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgCourses.Size = new System.Drawing.Size(253, 97);
+            this.dtgCourses.Size = new System.Drawing.Size(342, 126);
             this.dtgCourses.TabIndex = 4;
             // 
             // dtgPayments
@@ -275,14 +275,14 @@
             this.dtgPayments.Location = new System.Drawing.Point(28, 19);
             this.dtgPayments.Name = "dtgPayments";
             this.dtgPayments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgPayments.Size = new System.Drawing.Size(253, 138);
+            this.dtgPayments.Size = new System.Drawing.Size(342, 138);
             this.dtgPayments.TabIndex = 4;
             // 
             // InstructorOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 472);
+            this.ClientSize = new System.Drawing.Size(839, 476);
             this.Controls.Add(this.btnFindInstructor);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
