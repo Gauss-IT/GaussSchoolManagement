@@ -79,7 +79,7 @@ namespace GaussSchoolManagement.Forms
 
 
             var students = data.NxenesKurses
-                .Where(x => x.KursId == CourseID)
+                .Where(x => x.KursId == CourseID && x.Nxene != null && x.Nxene.Persona != null)
                 .Select(x => x.Nxene.Persona.Emri + " " + x.Nxene.Persona.Mbiemri)
                 .ToList();
             lbStudents.DataSource = students;

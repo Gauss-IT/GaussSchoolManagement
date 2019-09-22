@@ -1,5 +1,4 @@
 ﻿using GaussSchoolManagement.DataModel;
-using GaussSchoolManagement.Forms;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,7 +18,7 @@ namespace GaussSchoolManagement
             // Just a random small query to compile the model
             var justForInitialization = DatabaseModel.Instance.Shkollas.AsEnumerable();
             justForInitialization = null;
-            Application.Run(new Dashboard());
+            Application.Run(new Forms.RibbonForm());
         }
     }
 }
