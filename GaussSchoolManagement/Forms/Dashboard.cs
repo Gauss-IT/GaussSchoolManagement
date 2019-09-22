@@ -37,5 +37,11 @@ namespace GaussSchoolManagement.Forms
             var form = new CourseOverview();
             form.Show();
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            var form = new RibbonForm();
+            form.Show();
+        }
     }
 }
