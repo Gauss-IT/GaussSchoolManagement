@@ -50,26 +50,33 @@ namespace GaussSchoolManagement.Forms
 
         private void UpdateData()
         {
-            var data = new Kurse();
-            if (!_isNewCourse && _parent.CourseIDs.Contains(_parent.CourseID))
-                data = DatabaseModel.Instance.Kurses.First(x => x.KursId == _parent.CourseID);
-
-            data.ShifraKursit = txtCode.Text;
-            data.EmriKursit = txtName.Text;
-            data.Niveli = cmbLevel.Text;
-            data.VitiShkollor = txtYear.Text;
-            data.Pershkrimi = txtDescription.Text;
-
-            if (_isNewCourse)
+            try
             {
-                DatabaseModel.Instance.Kurses.Add(data);
-                DatabaseModel.Instance.SaveChanges();
-                _parent.UpdateCourseIDs();
-            }
-            else
-                DatabaseModel.Instance.SaveChanges();
+                var data = new Kurse();
+                if (!_isNewCourse && _parent.CourseIDs.Contains(_parent.CourseID))
+                    data = DatabaseModel.Instance.Kurses.First(x => x.KursId == _parent.CourseID);
 
-            _parent.CourseID = data.KursId;
+                data.ShifraKursit = txtCode.Text;
+                data.EmriKursit = txtName.Text;
+                data.Niveli = cmbLevel.Text;
+                data.VitiShkollor = txtYear.Text;
+                data.Pershkrimi = txtDescription.Text;
+
+                if (_isNewCourse)
+                {
+                    DatabaseModel.Instance.Kurses.Add(data);
+                    DatabaseModel.Instance.SaveChanges();
+                    _parent.UpdateCourseIDs();
+                }
+                else
+                    DatabaseModel.Instance.SaveChanges();
+
+                _parent.CourseID = data.KursId;
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void Exit()

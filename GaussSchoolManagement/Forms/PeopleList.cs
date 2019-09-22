@@ -15,7 +15,14 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            DatabaseModel.Instance.SaveChanges();
+            try
+            {
+                DatabaseModel.Instance.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateDataGrid()

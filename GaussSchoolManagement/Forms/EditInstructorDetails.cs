@@ -51,27 +51,34 @@ namespace GaussSchoolManagement.Forms
 
         private void UpdateData()
         {
-            var data = new Instruktore() { Persona = new Persona() };
-            if (!_isNewInstructor && _parent.InstructorIDs.Contains(_parent.InstructorID))
-                data = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == _parent.InstructorID);
-
-            data.Persona.Emri = txtName.Text;
-            data.Persona.Mbiemri = txtSurname.Text;
-            data.Persona.DataLindjes = dtpBirthday.Value;
-            data.Persona.EmailAdresa = txtEmailAddress.Text;
-            data.Persona.Telefoni = txtPhoneNumber.Text;
-            data.Persona.Adresa = txtAddress.Text;
-
-            if (_isNewInstructor)
+            try
             {
-                DatabaseModel.Instance.Instruktores.Add(data);
-                DatabaseModel.Instance.SaveChanges();
-                _parent.UpdateInstructorIds();
-            }
-            else
-                DatabaseModel.Instance.SaveChanges();
+                var data = new Instruktore() { Persona = new Persona() };
+                if (!_isNewInstructor && _parent.InstructorIDs.Contains(_parent.InstructorID))
+                    data = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == _parent.InstructorID);
 
-            _parent.InstructorID = data.InstruktorId;
+                data.Persona.Emri = txtName.Text;
+                data.Persona.Mbiemri = txtSurname.Text;
+                data.Persona.DataLindjes = dtpBirthday.Value;
+                data.Persona.EmailAdresa = txtEmailAddress.Text;
+                data.Persona.Telefoni = txtPhoneNumber.Text;
+                data.Persona.Adresa = txtAddress.Text;
+
+                if (_isNewInstructor)
+                {
+                    DatabaseModel.Instance.Instruktores.Add(data);
+                    DatabaseModel.Instance.SaveChanges();
+                    _parent.UpdateInstructorIds();
+                }
+                else
+                    DatabaseModel.Instance.SaveChanges();
+
+                _parent.InstructorID = data.InstruktorId;
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void Exit()

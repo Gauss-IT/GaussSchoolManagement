@@ -51,27 +51,34 @@ namespace GaussSchoolManagement.Forms
 
         private void UpdateData()
         {
-            var data = new Nxene() { Persona = new Persona() };
-            if (!_isNewStudent && _parent.StudentIDs.Contains(_parent.StudentID))
-                data = DatabaseModel.Instance.Nxenes.First(x => x.NxenesId == _parent.StudentID);
-
-            data.Persona.Emri = txtName.Text;
-            data.Persona.Mbiemri = txtSurname.Text;
-            data.Persona.DataLindjes = dtpBirthday.Value;
-            data.Persona.EmailAdresa = txtEmailAddress.Text;
-            data.Persona.Telefoni = txtPhoneNumber.Text;
-            data.Persona.Adresa = txtAddress.Text;
-
-            if (_isNewStudent)
+            try
             {
-                DatabaseModel.Instance.Nxenes.Add(data);
-                DatabaseModel.Instance.SaveChanges();
-                _parent.UpdateStudentIds();
-            }
-            else
-                DatabaseModel.Instance.SaveChanges();
+                var data = new Nxene() { Persona = new Persona() };
+                if (!_isNewStudent && _parent.StudentIDs.Contains(_parent.StudentID))
+                    data = DatabaseModel.Instance.Nxenes.First(x => x.NxenesId == _parent.StudentID);
 
-            _parent.StudentID = data.NxenesId;
+                data.Persona.Emri = txtName.Text;
+                data.Persona.Mbiemri = txtSurname.Text;
+                data.Persona.DataLindjes = dtpBirthday.Value;
+                data.Persona.EmailAdresa = txtEmailAddress.Text;
+                data.Persona.Telefoni = txtPhoneNumber.Text;
+                data.Persona.Adresa = txtAddress.Text;
+
+                if (_isNewStudent)
+                {
+                    DatabaseModel.Instance.Nxenes.Add(data);
+                    DatabaseModel.Instance.SaveChanges();
+                    _parent.UpdateStudentIds();
+                }
+                else
+                    DatabaseModel.Instance.SaveChanges();
+
+                _parent.StudentID = data.NxenesId;
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void Exit()
