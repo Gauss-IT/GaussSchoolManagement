@@ -33,6 +33,7 @@ namespace GaussSchoolManagement.Forms
         {
             Hide();
             var form = new EditCourseDetails(this);
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
@@ -40,12 +41,14 @@ namespace GaussSchoolManagement.Forms
         {
             Hide();
             var form = new CoursesList(this);
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
             var form = new EditCourseDetails(this, true);
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
@@ -159,6 +162,7 @@ namespace GaussSchoolManagement.Forms
 
                 AddStudentsToCourse(args);
             };
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 

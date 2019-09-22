@@ -33,6 +33,7 @@ namespace GaussSchoolManagement.Forms
         {
             Hide();
             var form = new EditStudentDetails(this);
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
@@ -47,12 +48,14 @@ namespace GaussSchoolManagement.Forms
 
                 StudentID = args[0];
             };
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
             var form = new EditStudentDetails(this, true);
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 
@@ -117,6 +120,10 @@ namespace GaussSchoolManagement.Forms
             if (!StudentIDs.Contains(StudentID))
                 return;
             var student = DatabaseModel.Instance.Nxenes.First(x=>x.NxenesId == StudentID);
+            var studentCourse = DatabaseModel.Instance.NxenesKurses.Where(x=>x.NxenesId == StudentID);
+            var studentPayments = DatabaseModel.Instance.NxenesPagesas.Where(x => x.NxenesId == StudentID);
+            DatabaseModel.Instance.NxenesPagesas.RemoveRange(studentPayments);
+            DatabaseModel.Instance.NxenesKurses.RemoveRange(studentCourse);
             DatabaseModel.Instance.Nxenes.Remove(student);
             DatabaseModel.Instance.SaveChanges();
             UpdateStudentIds();
@@ -155,6 +162,7 @@ namespace GaussSchoolManagement.Forms
 
                 AddCoursesToStudent(args);
             };
+            form.MdiParent = this.MdiParent;
             form.Show();
         }
 

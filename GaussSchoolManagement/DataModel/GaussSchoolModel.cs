@@ -45,6 +45,12 @@ namespace GaussSchoolManagement.DataModel
                 .Property(e => e.VitiShkollor)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<NxenesKurse>()
+                .HasOptional(nk => nk.Nxene)
+                .WithMany(n => n.NxenesKurses)
+                .HasForeignKey(nk => nk.NxenesId)
+                .WillCascadeOnDelete();
+
             modelBuilder.Entity<Nxene>()
                 .Property(e => e.Klasa)
                 .IsUnicode(false);
