@@ -108,16 +108,24 @@ namespace GaussSchoolManagement.Forms
         {
             if (!InstructorIDs.Contains(InstructorID))
                 return;
+            try
+            { 
             var instructor = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == InstructorID);
             DatabaseModel.Instance.Instruktores.Remove(instructor);
             DatabaseModel.Instance.SaveChanges();
+            MessageBox.Show($"The instructor {instructor.Persona.Emri} was removed successfully!");
 
-            UpdateInstructorIds();
+                UpdateInstructorIds();
             if(InstructorIDs.Contains(InstructorID + 1))
                 IncrementInstructorId();
             else
                  DecrementInstructorId();
             UpdateButtonEnabled();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error with the database trasnction");
+            }
         }
 
         private void IncrementInstructorId()
@@ -153,13 +161,20 @@ namespace GaussSchoolManagement.Forms
 
         private void AddCoursesToInstructor(List<int> courseIds)
         {
-            var newInsturctorCourses = courseIds.Select(x => new InstruktoreKurse { InstruktorId = InstructorID, KursId = x });
-            DatabaseModel.Instance.InstruktoreKurses.AddRange(newInsturctorCourses);
-            DatabaseModel.Instance.SaveChanges();
+            try
+            {
+                var newInsturctorCourses = courseIds.Select(x => new InstruktoreKurse { InstruktorId = InstructorID, KursId = x });
+                DatabaseModel.Instance.InstruktoreKurses.AddRange(newInsturctorCourses);
+                DatabaseModel.Instance.SaveChanges();
 
-            PopulateCourseDataGrid();
+                PopulateCourseDataGrid();
 
-            MessageBox.Show($"Successfully added {courseIds.Count} courses");
+                MessageBox.Show($"Successfully added {courseIds.Count} courses");
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void BtnRemoveCourse_Click(object sender, EventArgs e)

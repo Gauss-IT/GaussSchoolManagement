@@ -23,11 +23,19 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnAddParent_Click(object sender, EventArgs e)
         {
-            var newParent = new Prinder();
-            newParent.PersonId = ((dynamic)cmbPeople.SelectedItem).Id;
-            DatabaseModel.Instance.Prinders.Add(newParent);
-            DatabaseModel.Instance.SaveChanges();
-            PopulateDataGrid();
+            try
+            {
+
+                var newParent = new Prinder();
+                newParent.PersonId = ((dynamic)cmbPeople.SelectedItem).Id;
+                DatabaseModel.Instance.Prinders.Add(newParent);
+                DatabaseModel.Instance.SaveChanges();
+                PopulateDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateDataGrid()

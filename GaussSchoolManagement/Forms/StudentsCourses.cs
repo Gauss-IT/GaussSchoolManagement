@@ -23,14 +23,21 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnAddStdntCrs_Click(object sender, EventArgs e)
         {
-            var nxenesKurse = new NxenesKurse
+            try
             {
-                NxenesId = ((dynamic)cmbStudents.SelectedItem).Id,
-                KursId = ((dynamic)cmbCourses.SelectedItem).Id
-            };
-            DatabaseModel.Instance.NxenesKurses.Add(nxenesKurse);
-            DatabaseModel.Instance.SaveChanges();
-            PopulateDataGrid();
+                var nxenesKurse = new NxenesKurse
+                {
+                    NxenesId = ((dynamic)cmbStudents.SelectedItem).Id,
+                    KursId = ((dynamic)cmbCourses.SelectedItem).Id
+                };
+                DatabaseModel.Instance.NxenesKurses.Add(nxenesKurse);
+                DatabaseModel.Instance.SaveChanges();
+                PopulateDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateDataGrid()

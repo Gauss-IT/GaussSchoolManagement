@@ -16,14 +16,21 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnAddInstrCrs_Click(object sender, System.EventArgs e)
         {
-            var kurseInstruktore = new InstruktoreKurse
+            try
             {
-                InstruktorId = ((dynamic)cmbInstructors.SelectedItem).Id,
-                KursId = ((dynamic)cmbCourses.SelectedItem).Id
-            };
-            DatabaseModel.Instance.InstruktoreKurses.Add(kurseInstruktore);
-            DatabaseModel.Instance.SaveChanges();
-            PopulateDataGrid();
+                var kurseInstruktore = new InstruktoreKurse
+                {
+                    InstruktorId = ((dynamic)cmbInstructors.SelectedItem).Id,
+                    KursId = ((dynamic)cmbCourses.SelectedItem).Id
+                };
+                DatabaseModel.Instance.InstruktoreKurses.Add(kurseInstruktore);
+                DatabaseModel.Instance.SaveChanges();
+                PopulateDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void BtnRemoveInstCrs_Click(object sender, System.EventArgs e)

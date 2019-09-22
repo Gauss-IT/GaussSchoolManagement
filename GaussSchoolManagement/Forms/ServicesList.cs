@@ -20,7 +20,14 @@ namespace GaussSchoolManagement.Forms
 
         private void BtnSaveServices_Click(object sender, EventArgs e)
         {
-            DatabaseModel.Instance.SaveChanges();
+            try
+            {
+                DatabaseModel.Instance.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
     }
 }
