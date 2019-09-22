@@ -16,5 +16,29 @@ namespace GaussSchoolManagement.Forms
         {
             InitializeComponent();
         }
+
+        private void RbnBtnStudents_Click(object sender, EventArgs e)
+        {
+            var form = new StudentOverview();
+            form.Show();
+        }
+
+        private void RbnBtnCourses_Click(object sender, EventArgs e)
+        {
+            var form = new CourseOverview();
+            form.Show();
+        }
+
+        private void RbnBtnInstructors_Click(object sender, EventArgs e)
+        {
+            var form = new InstructorOverview();
+            form.Show();
+        }
+
+        private void BtnEntryForm_Click(object sender, EventArgs e)
+        {
+            var form = new EntryForm();
+            form.Show();
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.rbnBtnStudents = new System.Windows.Forms.RibbonButton();
             this.rbnBtnCourses = new System.Windows.Forms.RibbonButton();
             this.rbnBtnInstructors = new System.Windows.Forms.RibbonButton();
+            this.btnEntryForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -83,6 +84,7 @@
             this.rbnBtnStudents.Name = "rbnBtnStudents";
             this.rbnBtnStudents.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbnBtnStudents.SmallImage")));
             this.rbnBtnStudents.Text = "Students";
+            this.rbnBtnStudents.Click += new System.EventHandler(this.RbnBtnStudents_Click);
             // 
             // rbnBtnCourses
             // 
@@ -91,6 +93,7 @@
             this.rbnBtnCourses.Name = "rbnBtnCourses";
             this.rbnBtnCourses.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbnBtnCourses.SmallImage")));
             this.rbnBtnCourses.Text = "Courses";
+            this.rbnBtnCourses.Click += new System.EventHandler(this.RbnBtnCourses_Click);
             // 
             // rbnBtnInstructors
             // 
@@ -99,12 +102,24 @@
             this.rbnBtnInstructors.Name = "rbnBtnInstructors";
             this.rbnBtnInstructors.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbnBtnInstructors.SmallImage")));
             this.rbnBtnInstructors.Text = "Instructors";
+            this.rbnBtnInstructors.Click += new System.EventHandler(this.RbnBtnInstructors_Click);
+            // 
+            // btnEntryForm
+            // 
+            this.btnEntryForm.Location = new System.Drawing.Point(693, 392);
+            this.btnEntryForm.Name = "btnEntryForm";
+            this.btnEntryForm.Size = new System.Drawing.Size(118, 57);
+            this.btnEntryForm.TabIndex = 1;
+            this.btnEntryForm.Text = "EntryForm";
+            this.btnEntryForm.UseVisualStyleBackColor = true;
+            this.btnEntryForm.Click += new System.EventHandler(this.BtnEntryForm_Click);
             // 
             // RibbonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 485);
+            this.Controls.Add(this.btnEntryForm);
             this.Controls.Add(this.ribbon1);
             this.KeyPreview = true;
             this.Name = "RibbonForm";
@@ -121,5 +136,6 @@
         private System.Windows.Forms.RibbonButton rbnBtnStudents;
         private System.Windows.Forms.RibbonButton rbnBtnCourses;
         private System.Windows.Forms.RibbonButton rbnBtnInstructors;
+        private System.Windows.Forms.Button btnEntryForm;
     }
 }
