@@ -182,7 +182,7 @@ namespace GaussSchoolManagement.Forms
         private void PopulateCourseDataGrid()
         {
             var courses = DatabaseModel.Instance.NxenesKurses
-                .Where(x => x.NxenesId == StudentID &&  && x.Kurse != null)
+                .Where(x => x.NxenesId == StudentID && x.Kurse != null)
                 .Select(x =>
                 new
                 {
