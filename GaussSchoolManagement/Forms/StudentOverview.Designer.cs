@@ -37,7 +37,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnFindStudent = new System.Windows.Forms.Button();
             this.btnEditDetails = new System.Windows.Forms.Button();
-            this.lbCourses = new System.Windows.Forms.ListBox();
             this.lblId = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
@@ -53,10 +52,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lbPayments = new System.Windows.Forms.ListBox();
+            this.dtgCourses = new System.Windows.Forms.DataGridView();
+            this.dtgPayments = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPayments)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -100,7 +102,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Enabled = false;
-            this.btnPrevious.Location = new System.Drawing.Point(46, 67);
+            this.btnPrevious.Location = new System.Drawing.Point(47, 77);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(67, 23);
             this.btnPrevious.TabIndex = 3;
@@ -110,7 +112,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(268, 62);
+            this.btnNext.Location = new System.Drawing.Point(269, 72);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(62, 23);
             this.btnNext.TabIndex = 3;
@@ -121,7 +123,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(165, 104);
+            this.label8.Location = new System.Drawing.Point(166, 114);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 0;
@@ -129,7 +131,7 @@
             // 
             // btnFindStudent
             // 
-            this.btnFindStudent.Location = new System.Drawing.Point(46, 136);
+            this.btnFindStudent.Location = new System.Drawing.Point(47, 146);
             this.btnFindStudent.Name = "btnFindStudent";
             this.btnFindStudent.Size = new System.Drawing.Size(284, 23);
             this.btnFindStudent.TabIndex = 3;
@@ -147,21 +149,10 @@
             this.btnEditDetails.UseVisualStyleBackColor = true;
             this.btnEditDetails.Click += new System.EventHandler(this.BtnEditDetails_Click);
             // 
-            // lbCourses
-            // 
-            this.lbCourses.FormattingEnabled = true;
-            this.lbCourses.Items.AddRange(new object[] {
-            "Small Basic",
-            "Python"});
-            this.lbCourses.Location = new System.Drawing.Point(25, 28);
-            this.lbCourses.Name = "lbCourses";
-            this.lbCourses.Size = new System.Drawing.Size(256, 56);
-            this.lbCourses.TabIndex = 8;
-            // 
             // lblId
             // 
             this.lblId.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblId.Location = new System.Drawing.Point(175, 67);
+            this.lblId.Location = new System.Drawing.Point(176, 77);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(32, 22);
             this.lblId.TabIndex = 0;
@@ -187,7 +178,7 @@
             // 
             // btnAddCourse
             // 
-            this.btnAddCourse.Location = new System.Drawing.Point(25, 102);
+            this.btnAddCourse.Location = new System.Drawing.Point(25, 113);
             this.btnAddCourse.Name = "btnAddCourse";
             this.btnAddCourse.Size = new System.Drawing.Size(120, 23);
             this.btnAddCourse.TabIndex = 3;
@@ -197,12 +188,13 @@
             // 
             // btnRemoveCourse
             // 
-            this.btnRemoveCourse.Location = new System.Drawing.Point(161, 102);
+            this.btnRemoveCourse.Location = new System.Drawing.Point(161, 113);
             this.btnRemoveCourse.Name = "btnRemoveCourse";
             this.btnRemoveCourse.Size = new System.Drawing.Size(120, 23);
             this.btnRemoveCourse.TabIndex = 3;
             this.btnRemoveCourse.Text = "Remove";
             this.btnRemoveCourse.UseVisualStyleBackColor = true;
+            this.btnRemoveCourse.Click += new System.EventHandler(this.BtnRemoveCourse_Click);
             // 
             // button1
             // 
@@ -289,7 +281,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbCourses);
+            this.groupBox2.Controls.Add(this.dtgCourses);
             this.groupBox2.Controls.Add(this.btnAddCourse);
             this.groupBox2.Controls.Add(this.btnRemoveCourse);
             this.groupBox2.Location = new System.Drawing.Point(417, 33);
@@ -301,7 +293,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.lbPayments);
+            this.groupBox3.Controls.Add(this.dtgPayments);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button1);
@@ -312,16 +304,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Payments";
             // 
-            // lbPayments
+            // dtgCourses
             // 
-            this.lbPayments.FormattingEnabled = true;
-            this.lbPayments.Items.AddRange(new object[] {
-            "Small Basic",
-            "Python"});
-            this.lbPayments.Location = new System.Drawing.Point(25, 28);
-            this.lbPayments.Name = "lbPayments";
-            this.lbPayments.Size = new System.Drawing.Size(256, 121);
-            this.lbPayments.TabIndex = 8;
+            this.dtgCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgCourses.Location = new System.Drawing.Point(25, 19);
+            this.dtgCourses.Name = "dtgCourses";
+            this.dtgCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgCourses.Size = new System.Drawing.Size(256, 88);
+            this.dtgCourses.TabIndex = 9;
+            // 
+            // dtgPayments
+            // 
+            this.dtgPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPayments.Location = new System.Drawing.Point(25, 19);
+            this.dtgPayments.Name = "dtgPayments";
+            this.dtgPayments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgPayments.Size = new System.Drawing.Size(256, 138);
+            this.dtgPayments.TabIndex = 4;
             // 
             // StudentOverview
             // 
@@ -342,6 +341,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPayments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,7 +359,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnFindStudent;
         private System.Windows.Forms.Button btnEditDetails;
-        private System.Windows.Forms.ListBox lbCourses;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblSurname;
@@ -374,6 +374,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox lbPayments;
+        private System.Windows.Forms.DataGridView dtgCourses;
+        private System.Windows.Forms.DataGridView dtgPayments;
     }
 }

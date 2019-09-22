@@ -82,17 +82,9 @@ namespace GaussSchoolManagement.Forms
             lblName.Text = data.Persona.Emri;
             lblSurname.Text = data.Persona.Mbiemri;
 
-            var courses = data.NxenesKurses
-                .Where(x => x.NxenesId == StudentID)
-                .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
-                .ToList();
-            lbCourses.DataSource = courses;
+            PopulateCourseDataGrid();
 
-            var payments = data.NxenesPagesas
-                .Where(x => x.NxenesId == StudentID)
-                .Select(x => x.Pagesa.FormaPageses + " " + x.Pagesa.ShumaPaguar)
-                .ToList();
-            lbPayments.DataSource = payments;
+            PopulatePaymentsDataGrid();
 
 
             UpdateButtonEnabled();
@@ -166,19 +158,65 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
-        private void AddCoursesToStudent(List<int> courseIds)
+        private void AddCoursesToStudent(List<int> StudentIds)
         {
-            var newRegistrations = courseIds.Select(x => new NxenesKurse { NxenesId = StudentID, KursId = x });
+            var newRegistrations = StudentIds.Select(x => new NxenesKurse { NxenesId = StudentID, KursId = x });
             DatabaseModel.Instance.NxenesKurses.AddRange(newRegistrations);
             DatabaseModel.Instance.SaveChanges();
 
-            var courses = DatabaseModel.Instance.NxenesKurses
-               .Where(x => x.NxenesId == StudentID)
-               .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
-               .ToList();
-            lbCourses.DataSource = courses;
+            PopulateCourseDataGrid();
 
-            MessageBox.Show($"Successfully added {courseIds.Count} courses");
+            MessageBox.Show($"Successfully added {StudentIds.Count} courses");
+        }
+
+        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        {
+            var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
+            var course = DatabaseModel.Instance.NxenesKurses.First(x => x.NxenesKursId == courseId);
+            DatabaseModel.Instance.NxenesKurses.Remove(course);
+            DatabaseModel.Instance.SaveChanges();
+
+            PopulateCourseDataGrid();
+        }
+
+        private void PopulateCourseDataGrid()
+        {
+            var courses = DatabaseModel.Instance.NxenesKurses
+                .Where(x => x.NxenesId == StudentID)
+                .Select(x =>
+                new
+                {
+                    Id = x.NxenesKursId,
+                    Name = x.Kurse.EmriKursit,
+                    SchoolYear = x.Kurse.VitiShkollor,
+                })
+               .ToList();
+            dtgCourses.DataSource = courses;
+            foreach (DataGridViewColumn column in dtgCourses.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
+        }
+
+        private void PopulatePaymentsDataGrid()
+        {
+            var payments = DatabaseModel.Instance.NxenesPagesas
+               .Where(x => x.NxenesId == StudentID)
+               .Select(x =>
+                new
+                {
+                    Id = x.NxenesPageseId,
+                    Name = x.Pagesa.Sherbimet.Pershkrimi,
+                    Total = x.Pagesa.ShumaPaguar,
+                }).ToList();
+            dtgPayments.DataSource = payments;
+
+            foreach (DataGridViewColumn column in dtgPayments.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
         }
     }
 }

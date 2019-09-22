@@ -75,18 +75,9 @@ namespace GaussSchoolManagement.Forms
             lblName.Text = data.Persona.Emri;
             lblSurname.Text = data.Persona.Mbiemri;
 
-            var courses = data.InstruktoreKurses
-                .Where(x => x.InstruktorId == InstructorID)
-                .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
-                .ToList();
-            lbCourses.DataSource = courses;
-            
-            
-            var payments = data.InstruktorePagesas
-                .Where(x => x.InstruktorId == InstructorID)
-                .Select(x => x.Pagesa.FormaPageses + " " + x.Pagesa.ShumaPaguar)
-                .ToList();
-            lbPayments.DataSource = payments;
+            PopulateCourseDataGrid();
+
+            PopulatePaymentsDataGrid();
 
             UpdateButtonEnabled();
         }
@@ -118,10 +109,6 @@ namespace GaussSchoolManagement.Forms
             if (!InstructorIDs.Contains(InstructorID))
                 return;
             var instructor = DatabaseModel.Instance.Instruktores.First(x => x.InstruktorId == InstructorID);
-            //var instructorKurse = DatabaseModel.Instance.InstruktoreKurses.Where(x => x.InstruktorId == InstructorID);
-            //var instructorPagesa = DatabaseModel.Instance.InstruktorePagesas.Where(x => x.InstruktorId == InstructorID);
-            //DatabaseModel.Instance.InstruktorePagesas.RemoveRange(instructorPagesa);
-            //DatabaseModel.Instance.InstruktoreKurses.RemoveRange(instructorKurse);
             DatabaseModel.Instance.Instruktores.Remove(instructor);
             DatabaseModel.Instance.SaveChanges();
 
@@ -170,13 +157,59 @@ namespace GaussSchoolManagement.Forms
             DatabaseModel.Instance.InstruktoreKurses.AddRange(newInsturctorCourses);
             DatabaseModel.Instance.SaveChanges();
 
-            var courses = DatabaseModel.Instance.InstruktoreKurses
-               .Where(x => x.InstruktorId == InstructorID)
-               .Select(x => x.Kurse.EmriKursit + " " + x.Kurse.VitiShkollor)
-               .ToList();
-            lbCourses.DataSource = courses;
+            PopulateCourseDataGrid();
 
             MessageBox.Show($"Successfully added {courseIds.Count} courses");
+        }
+
+        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        {
+            var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
+            var course = DatabaseModel.Instance.InstruktoreKurses.First(x => x.InstruktorKursId == courseId);
+            DatabaseModel.Instance.InstruktoreKurses.Remove(course);
+            DatabaseModel.Instance.SaveChanges();
+
+            PopulateCourseDataGrid();
+        }
+
+        private void PopulateCourseDataGrid()
+        {
+            var courses = DatabaseModel.Instance.InstruktoreKurses
+               .Where(x => x.InstruktorId == InstructorID)
+               .Select(x =>
+                new
+                {
+                    Id = x.InstruktorKursId,
+                    Name = x.Kurse.EmriKursit,
+                    SchoolYear = x.Kurse.VitiShkollor,
+                }).ToList();
+            dtgCourses.DataSource = courses;
+
+            foreach (DataGridViewColumn column in dtgCourses.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
+        }
+
+        private void PopulatePaymentsDataGrid()
+        {
+            var payments = DatabaseModel.Instance.InstruktorePagesas
+               .Where(x => x.InstruktorId == InstructorID)
+               .Select(x =>
+                new
+                {
+                    Id = x.InstruktorPagesaId,
+                    Name = x.Pagesa.Sherbimet.Pershkrimi,
+                    Total = x.Pagesa.ShumaPaguar,
+                }).ToList();
+            dtgPayments.DataSource = payments;
+
+            foreach (DataGridViewColumn column in dtgPayments.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
         }
     }
 }

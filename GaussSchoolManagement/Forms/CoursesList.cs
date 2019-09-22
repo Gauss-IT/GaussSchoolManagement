@@ -69,18 +69,6 @@ namespace GaussSchoolManagement.Forms
             Close();
         }
 
-        //TO BE DELETED
-        //private void OnStudentSelected()
-        //{
-        //    if (dtgCourses.SelectedRows.Count == 0)
-        //        return;
-
-        //    var id = (int)dtgCourses.SelectedRows[0].Cells[0].Value;            
-        //    _parent.CourseID = id;
-        //    _parent.Show();
-        //    Close();
-        //}
-
         private void PopulateDataGrid()
         {
             DatabaseModel.Instance.Kurses.Load();
