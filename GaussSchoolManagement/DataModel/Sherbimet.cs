@@ -14,7 +14,6 @@ namespace GaussSchoolManagement.DataModel
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SherbimiId { get; set; }
 
         public decimal? Cmimi { get; set; }

@@ -76,6 +76,12 @@
     <Compile Include="Forms\EditCourseDetails.Designer.cs">
       <DependentUpon>EditCourseDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditPaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditPaymentDetails.Designer.cs">
+      <DependentUpon>EditPaymentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditStudentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,12 @@
     <Compile Include="Forms\RibbonForm.Designer.cs">
       <DependentUpon>RibbonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PaymentOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentOverview.Designer.cs">
+      <DependentUpon>PaymentOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StudentOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,9 @@
     <EmbeddedResource Include="Forms\EditCourseDetails.resx">
       <DependentUpon>EditCourseDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditPaymentDetails.resx">
+      <DependentUpon>EditPaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditStudentDetails.resx">
       <DependentUpon>EditStudentDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RibbonForm.resx">
       <DependentUpon>RibbonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentOverview.resx">
+      <DependentUpon>PaymentOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentOverview.resx">
       <DependentUpon>StudentOverview.cs</DependentUpon>

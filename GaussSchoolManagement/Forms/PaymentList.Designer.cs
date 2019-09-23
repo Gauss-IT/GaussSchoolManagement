@@ -52,6 +52,8 @@
             // 
             // dtgPaymentsDataGrid
             // 
+            this.dtgPaymentsDataGrid.AllowUserToAddRows = false;
+            this.dtgPaymentsDataGrid.AllowUserToDeleteRows = false;
             this.dtgPaymentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPaymentsDataGrid.Location = new System.Drawing.Point(52, 99);
             this.dtgPaymentsDataGrid.Name = "dtgPaymentsDataGrid";

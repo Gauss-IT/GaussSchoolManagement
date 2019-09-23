@@ -37,6 +37,7 @@
             this.rbnBtnInstructors = new System.Windows.Forms.RibbonButton();
             this.rbnBtnEntryForm = new System.Windows.Forms.RibbonButton();
             this.btnEntryForm = new System.Windows.Forms.Button();
+            this.rbnBtnPayments = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -76,6 +77,7 @@
             this.rbnPnlActivities.Items.Add(this.rbnBtnStudents);
             this.rbnPnlActivities.Items.Add(this.rbnBtnCourses);
             this.rbnPnlActivities.Items.Add(this.rbnBtnInstructors);
+            this.rbnPnlActivities.Items.Add(this.rbnBtnPayments);
             this.rbnPnlActivities.Items.Add(this.rbnBtnEntryForm);
             this.rbnPnlActivities.Name = "rbnPnlActivities";
             this.rbnPnlActivities.Text = "Activities";
@@ -123,6 +125,15 @@
             this.btnEntryForm.Size = new System.Drawing.Size(75, 23);
             this.btnEntryForm.TabIndex = 0;
             // 
+            // rbnBtnPayments
+            // 
+            this.rbnBtnPayments.Image = ((System.Drawing.Image)(resources.GetObject("rbnBtnPayments.Image")));
+            this.rbnBtnPayments.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbnBtnPayments.LargeImage")));
+            this.rbnBtnPayments.Name = "rbnBtnPayments";
+            this.rbnBtnPayments.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbnBtnPayments.SmallImage")));
+            this.rbnBtnPayments.Text = "Payments";
+            this.rbnBtnPayments.Click += new System.EventHandler(this.RbnBtnPayments_Click);
+            // 
             // RibbonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,5 +161,6 @@
         private System.Windows.Forms.RibbonButton rbnBtnInstructors;
         private System.Windows.Forms.Button btnEntryForm;
         private System.Windows.Forms.RibbonButton rbnBtnEntryForm;
+        private System.Windows.Forms.RibbonButton rbnBtnPayments;
     }
 }

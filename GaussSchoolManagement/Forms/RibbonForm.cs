@@ -37,5 +37,12 @@ namespace GaussSchoolManagement.Forms
             form.MdiParent = this;
             form.Show();
         }
+
+        private void RbnBtnPayments_Click(object sender, EventArgs e)
+        {
+            var form = new PaymentOverview();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }
