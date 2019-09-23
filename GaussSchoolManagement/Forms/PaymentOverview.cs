@@ -24,9 +24,17 @@ namespace GaussSchoolManagement.Forms
 
         public PaymentOverview()
         {
-            InitializeComponent();
-            UpdatePaymentIds();
-            PaymentID = PaymentIDs.Min();
+            try
+            {
+                InitializeComponent();
+                UpdatePaymentIds();
+                PaymentID = PaymentIDs.Min();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void BtnEditDetails_Click(object sender, EventArgs e)
@@ -133,7 +141,7 @@ namespace GaussSchoolManagement.Forms
                     DecrementPaymentId();
                 UpdateButtonEnabled();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("There was an error with the database transaction!");
                 
@@ -155,6 +163,11 @@ namespace GaussSchoolManagement.Forms
             while (previousId > PaymentIDs.Min() && !PaymentIDs.Contains(previousId))
                 previousId--;
             PaymentID = previousId;
+        }
+
+        private void PaymentOverview_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

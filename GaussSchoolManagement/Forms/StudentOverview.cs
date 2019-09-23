@@ -134,7 +134,7 @@ namespace GaussSchoolManagement.Forms
                 DecrementStudentId();
             UpdateButtonEnabled();
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("There was an error with the database transaction!");
                 
