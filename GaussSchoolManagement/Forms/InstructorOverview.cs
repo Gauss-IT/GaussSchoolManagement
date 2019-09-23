@@ -167,6 +167,16 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
+        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        {
+            var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
+            var course = DatabaseModel.Instance.InstruktoreKurses.First(x => x.InstruktorKursId == courseId);
+            DatabaseModel.Instance.InstruktoreKurses.Remove(course);
+            DatabaseModel.Instance.SaveChanges();
+
+            PopulateCourseDataGrid();
+        }
+
         private void AddCoursesToInstructor(List<int> courseIds)
         {
             try
@@ -185,14 +195,60 @@ namespace GaussSchoolManagement.Forms
             }
         }
 
-        private void BtnRemoveCourse_Click(object sender, EventArgs e)
-        {
-            var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
-            var course = DatabaseModel.Instance.InstruktoreKurses.First(x => x.InstruktorKursId == courseId);
-            DatabaseModel.Instance.InstruktoreKurses.Remove(course);
-            DatabaseModel.Instance.SaveChanges();
 
-            PopulateCourseDataGrid();
+        private void BtnAddPayment_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new PaymentList(this, true);
+            form.PaymentsSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                AddPaymentsToInstructor(args);
+            };
+            form.MdiParent = this.MdiParent;
+            form.Show();
+        }
+
+        private void BtnRemovePayment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var paymentId = (int)dtgPayments.CurrentRow.Cells[0].Value;
+                var payment = DatabaseModel.Instance.InstruktorePagesas.First(x => x.InstruktorPagesaId == paymentId);
+                DatabaseModel.Instance.InstruktorePagesas.Remove(payment);
+                DatabaseModel.Instance.SaveChanges();
+
+                PopulatePaymentsDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
+        }
+
+        private void BtnDuePayments_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddPaymentsToInstructor(List<int> InstructorIds)
+        {
+            try
+            {
+                var newRegistrations = InstructorIds.Select(x => new InstruktorePagesa { InstruktorId = InstructorID, PageseId = x });
+                DatabaseModel.Instance.InstruktorePagesas.AddRange(newRegistrations);
+                DatabaseModel.Instance.SaveChanges();
+
+                PopulatePaymentsDataGrid();
+
+                MessageBox.Show($"Successfully added {InstructorIds.Count} courses");
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
         }
 
         private void PopulateCourseDataGrid()

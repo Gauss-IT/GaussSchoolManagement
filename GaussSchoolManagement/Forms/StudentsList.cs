@@ -64,11 +64,14 @@ namespace GaussSchoolManagement.Forms
             Close();
         }
 
-        private void PopulateDataGrid()
+        private void PopulateDataGrid(IEnumerable<StudentsListData> data = null)
         {
-            DatabaseModel.Instance.Nxenes.Load();
-            dtgStudentsDataGrid.DataSource = new BindingSource { DataSource = GridData };
-            dtgStudentsDataGrid.Columns["Id"].Visible = false;
+            dtgStudentsDataGrid.DataSource = new BindingSource { DataSource = data ?? GridData };
+            foreach (DataGridViewColumn column in dtgStudentsDataGrid.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
         }
 
         private void OnInputChanged(object sender, EventArgs e)
@@ -91,10 +94,7 @@ namespace GaussSchoolManagement.Forms
                 selectedGridData = selectedGridData.Where(x => x.Birthday.HasValue 
                 && x.Birthday.Value.Year.ToString().ToLower().Contains(txtSchool.Text.ToLower()));
 
-            dtgStudentsDataGrid.DataSource = new BindingSource
-            {
-                DataSource = selectedGridData
-            }; 
+            PopulateDataGrid(selectedGridData);
         }
 
         private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

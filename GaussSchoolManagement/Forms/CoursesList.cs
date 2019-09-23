@@ -41,9 +41,9 @@ namespace GaussSchoolManagement.Forms
             _parent = parent;
         }
 
-        public CoursesList(CourseOverview studentOverview):this()
+        public CoursesList(CourseOverview courseOverview) :this()
         {
-            _parent = studentOverview;
+            _parent = courseOverview;
         }
 
         public CoursesList()
@@ -53,6 +53,11 @@ namespace GaussSchoolManagement.Forms
         }
 
         private void BtnStudentOverview_Click(object sender, EventArgs e)
+        {
+            OnCoursesSelected();
+        }
+
+        private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             OnCoursesSelected();
         }
@@ -107,10 +112,7 @@ namespace GaussSchoolManagement.Forms
             }; 
         }
 
-        private void DtgStudentsDataGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            OnCoursesSelected();
-        }
+        
 
         private void BtnClearSearch_Click(object sender, EventArgs e)
         {

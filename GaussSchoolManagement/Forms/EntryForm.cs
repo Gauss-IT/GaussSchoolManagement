@@ -42,9 +42,6 @@ namespace GaussSchoolManagement.Forms
         private void BtnEditPayments_Click(object sender, EventArgs e)
         {
             var form = new PaymentList();
-            var pagesa = DatabaseModel.Instance.Pagesas;
-            pagesa.Load();
-            form.dtgPaymentsDataGrid.DataSource = pagesa.Local.ToBindingList();
             form.MdiParent = this.MdiParent;
             form.Show();
         }

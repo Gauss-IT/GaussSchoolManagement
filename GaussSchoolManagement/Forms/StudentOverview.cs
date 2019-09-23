@@ -88,8 +88,7 @@ namespace GaussSchoolManagement.Forms
             PopulateCourseDataGrid();
 
             PopulatePaymentsDataGrid();
-
-
+            
             UpdateButtonEnabled();
         }
 
@@ -174,6 +173,23 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
+        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
+                var course = DatabaseModel.Instance.NxenesKurses.First(x => x.NxenesKursId == courseId);
+                DatabaseModel.Instance.NxenesKurses.Remove(course);
+                DatabaseModel.Instance.SaveChanges();
+
+                PopulateCourseDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
+        }
+
         private void AddCoursesToStudent(List<int> StudentIds)
         {
             try
@@ -192,16 +208,56 @@ namespace GaussSchoolManagement.Forms
             }
         }
 
-        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        
+
+        private void BtnAddPayment_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var form = new PaymentList(this, true);
+            form.PaymentsSelected += (s, args) =>
+            {
+                if (args.Count < 1)
+                    return;
+
+                AddPaymentsToStudent(args);
+            };
+            form.MdiParent = this.MdiParent;
+            form.Show();
+        }
+
+        private void BtnRemovePayment_Click(object sender, EventArgs e)
         {
             try
             {
-                var courseId = (int)dtgCourses.CurrentRow.Cells[0].Value;
-                var course = DatabaseModel.Instance.NxenesKurses.First(x => x.NxenesKursId == courseId);
-                DatabaseModel.Instance.NxenesKurses.Remove(course);
+                var paymentId = (int)dtgPayments.CurrentRow.Cells[0].Value;
+                var payment = DatabaseModel.Instance.NxenesPagesas.First(x => x.NxenesPageseId == paymentId);
+                DatabaseModel.Instance.NxenesPagesas.Remove(payment);
                 DatabaseModel.Instance.SaveChanges();
 
-                PopulateCourseDataGrid();
+                PopulatePaymentsDataGrid();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error");
+            }
+        }
+
+        private void BtnDuePayments_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddPaymentsToStudent(List<int> StudentIds)
+        {
+            try
+            {
+                var newRegistrations = StudentIds.Select(x => new NxenesPagesa { NxenesId = StudentID, PageseId = x });
+                DatabaseModel.Instance.NxenesPagesas.AddRange(newRegistrations);
+                DatabaseModel.Instance.SaveChanges();
+
+                PopulatePaymentsDataGrid();
+
+                MessageBox.Show($"Successfully added {StudentIds.Count} courses");
             }
             catch
             {

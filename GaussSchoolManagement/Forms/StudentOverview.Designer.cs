@@ -42,9 +42,9 @@
             this.lblSurname = new System.Windows.Forms.Label();
             this.btnAddCourse = new System.Windows.Forms.Button();
             this.btnRemoveCourse = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnRemovePayment = new System.Windows.Forms.Button();
+            this.btnAddPayment = new System.Windows.Forms.Button();
+            this.btnDuePayments = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -196,32 +196,35 @@
             this.btnRemoveCourse.UseVisualStyleBackColor = true;
             this.btnRemoveCourse.Click += new System.EventHandler(this.BtnRemoveCourse_Click);
             // 
-            // button1
+            // btnRemovePayment
             // 
-            this.button1.Location = new System.Drawing.Point(157, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Remove payment";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRemovePayment.Location = new System.Drawing.Point(157, 172);
+            this.btnRemovePayment.Name = "btnRemovePayment";
+            this.btnRemovePayment.Size = new System.Drawing.Size(83, 23);
+            this.btnRemovePayment.TabIndex = 3;
+            this.btnRemovePayment.Text = "Remove payment";
+            this.btnRemovePayment.UseVisualStyleBackColor = true;
+            this.btnRemovePayment.Click += new System.EventHandler(this.BtnRemovePayment_Click);
             // 
-            // button2
+            // btnAddPayment
             // 
-            this.button2.Location = new System.Drawing.Point(28, 172);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddPayment.Location = new System.Drawing.Point(28, 172);
+            this.btnAddPayment.Name = "btnAddPayment";
+            this.btnAddPayment.Size = new System.Drawing.Size(83, 23);
+            this.btnAddPayment.TabIndex = 3;
+            this.btnAddPayment.Text = "Add";
+            this.btnAddPayment.UseVisualStyleBackColor = true;
+            this.btnAddPayment.Click += new System.EventHandler(this.BtnAddPayment_Click);
             // 
-            // button3
+            // btnDuePayments
             // 
-            this.button3.Location = new System.Drawing.Point(286, 172);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Due payments";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDuePayments.Location = new System.Drawing.Point(286, 172);
+            this.btnDuePayments.Name = "btnDuePayments";
+            this.btnDuePayments.Size = new System.Drawing.Size(83, 23);
+            this.btnDuePayments.TabIndex = 3;
+            this.btnDuePayments.Text = "Due payments";
+            this.btnDuePayments.UseVisualStyleBackColor = true;
+            this.btnDuePayments.Click += new System.EventHandler(this.BtnDuePayments_Click);
             // 
             // groupBox1
             // 
@@ -308,9 +311,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.AutoSize = true;
             this.groupBox3.Controls.Add(this.dtgPayments);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnAddPayment);
+            this.groupBox3.Controls.Add(this.btnDuePayments);
+            this.groupBox3.Controls.Add(this.btnRemovePayment);
             this.groupBox3.Location = new System.Drawing.Point(417, 246);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(385, 214);
@@ -370,9 +373,9 @@
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Button btnAddCourse;
         private System.Windows.Forms.Button btnRemoveCourse;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnRemovePayment;
+        private System.Windows.Forms.Button btnAddPayment;
+        private System.Windows.Forms.Button btnDuePayments;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
