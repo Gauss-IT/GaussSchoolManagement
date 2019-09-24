@@ -74,11 +74,14 @@ namespace GaussSchoolManagement.Forms
             Close();
         }
 
-        private void PopulateDataGrid()
+        private void PopulateDataGrid(IEnumerable<CoursesListData> data = null)
         {
-            DatabaseModel.Instance.Kurses.Load();
-            dtgCourses.DataSource = new BindingSource { DataSource = GridData };
-            dtgCourses.Columns["Id"].Visible = false;
+            dtgCourses.DataSource = new BindingSource { DataSource = data ?? GridData };
+            foreach (DataGridViewColumn column in dtgCourses.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
         }
 
         private void OnInputChanged(object sender, EventArgs e)
@@ -102,14 +105,7 @@ namespace GaussSchoolManagement.Forms
             if (txtDescription.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.Description.ToLower().Contains(txtDescription.Text.ToLower()));
 
-            //Needs a better place
-            if (dtgCourses.Columns["Id"] != null)
-                dtgCourses.Columns["Id"].Visible = false;
-
-            dtgCourses.DataSource = new BindingSource
-            {
-                DataSource = selectedGridData
-            }; 
+            PopulateDataGrid(selectedGridData);
         }
 
         
