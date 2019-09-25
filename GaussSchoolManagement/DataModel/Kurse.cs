@@ -13,7 +13,6 @@ namespace GaussSchoolManagement.DataModel
         {
             InstruktoreKurses = new HashSet<InstruktoreKurse>();
             NxenesKurses = new HashSet<NxenesKurse>();
-            Sherbimets = new HashSet<Sherbimet>();
         }
 
         [Key]
@@ -39,8 +38,5 @@ namespace GaussSchoolManagement.DataModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NxenesKurse> NxenesKurses { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sherbimet> Sherbimets { get; set; }
     }
 }

@@ -21,13 +21,11 @@ namespace GaussSchoolManagement.DataModel
         [StringLength(50)]
         public string FormaPageses { get; set; }
 
+        [StringLength(50)]
+        public string PershkrimiPageses { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime? Data { get; set; }
-
-        [ForeignKey("Sherbimet")]
-        public int? SherbimiId { get; set; }
-
-        public decimal? SasiaSherbimeve { get; set; }
 
         public decimal? ShumaPaguar { get; set; }
 
@@ -39,6 +37,5 @@ namespace GaussSchoolManagement.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InstruktorePagesa> InstruktorePagesas { get; set; }
 
-        public virtual Sherbimet Sherbimet { get; set; }
     }
 }

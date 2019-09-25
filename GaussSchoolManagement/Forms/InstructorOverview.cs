@@ -280,7 +280,7 @@ namespace GaussSchoolManagement.Forms
                 new
                 {
                     Id = x.InstruktorPagesaId,
-                    Name = x.Pagesa.Sherbimet.Pershkrimi,
+                    Name = x.Pagesa.PershkrimiPageses,
                     Total = x.Pagesa.ShumaPaguar,
                 }).ToList();
             dtgPayments.DataSource = payments;

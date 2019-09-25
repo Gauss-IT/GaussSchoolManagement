@@ -77,7 +77,8 @@ namespace GaussSchoolManagement.Forms
         private void PopulateDataGrid(IEnumerable<CoursesListData> data = null)
         {
             dtgCourses.DataSource = new BindingSource { DataSource = data ?? GridData };
-            foreach (DataGridViewColumn column in dtgCourses.Columns)
+            foreach (DataGridViewColumn column in dtgCourses
+                .Columns)
             {
                 if (column.Name == "Id")
                     column.Visible = false;

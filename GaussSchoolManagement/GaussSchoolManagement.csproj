@@ -158,12 +158,6 @@
     <Compile Include="Forms\StudentOverview.Designer.cs">
       <DependentUpon>StudentOverview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServicesList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ServicesList.Designer.cs">
-      <DependentUpon>ServicesList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\StudentsCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,7 +196,6 @@
       <DependentUpon>SchoolsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataModel\Sherbimet.cs" />
     <Compile Include="DataModel\Shkolla.cs" />
     <Compile Include="DataModel\sysdiagram.cs" />
     <EmbeddedResource Include="Forms\EditInstructorDetails.resx">
@@ -249,9 +242,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SchoolsList.resx">
       <DependentUpon>SchoolsList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServicesList.resx">
-      <DependentUpon>ServicesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsCourses.resx">
       <DependentUpon>StudentsCourses.cs</DependentUpon>

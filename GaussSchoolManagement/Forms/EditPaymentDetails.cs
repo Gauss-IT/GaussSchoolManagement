@@ -30,7 +30,7 @@ namespace GaussSchoolManagement.Forms
             {
                 var data = DatabaseModel.Instance.Pagesas.First(x => x.PageseId == _parent.PaymentID);
                 txtPaymentForm.Text = data.FormaPageses;
-                txtServiceDescription.Text = data.Sherbimet.Pershkrimi;
+                txtServiceDescription.Text = data.PershkrimiPageses;
                 dtpDate.Value = data.Data.Value;
                 txtTotalPaid.Text = data.ShumaPaguar.ToString();
                 txtDiscount.Text = data.Zbritje.ToString();
@@ -45,6 +45,7 @@ namespace GaussSchoolManagement.Forms
         private void BtnSave_Click(object sender, System.EventArgs e)
         {
             UpdateData();
+            _parent.ResetGridData();
             Exit();
         }
 
@@ -52,12 +53,12 @@ namespace GaussSchoolManagement.Forms
         {
             try
             {
-                var data = new Pagesa() { Sherbimet = new Sherbimet() };
+                var data = new Pagesa();
                 if (!_isNewPayment && _parent.PaymentIDs.Contains(_parent.PaymentID))
                     data = DatabaseModel.Instance.Pagesas.First(x => x.PageseId == _parent.PaymentID);
 
                 data.FormaPageses = txtPaymentForm.Text;
-                data.Sherbimet.Pershkrimi = txtServiceDescription.Text;
+                data.PershkrimiPageses = txtServiceDescription.Text;
                 data.Data = dtpDate.Value;
                 data.ShumaPaguar = decimal.Parse(txtTotalPaid.Text);
                 data.Zbritje = decimal.Parse(txtDiscount.Text);

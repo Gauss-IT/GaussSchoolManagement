@@ -29,33 +29,19 @@ namespace GaussSchoolManagement.Forms
                 InitializeComponent();
                 UpdatePaymentIds();
                 PaymentID = PaymentIDs.Min();
+                ResetGridData();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void BtnEditDetails_Click(object sender, EventArgs e)
         {
             Hide();
             var form = new EditPaymentDetails(this);
-            form.MdiParent = this.MdiParent;
-            form.Show();
-        }
-
-        private void BtnFindStudent_Click(object sender, EventArgs e)
-        {
-            Hide();
-            var form = new PaymentList(this);
-            form.PaymentsSelected += (s, args) =>
-            {
-                if (args.Count < 1)
-                    return;
-
-                PaymentID = args[0];
-            };
             form.MdiParent = this.MdiParent;
             form.Show();
         }
@@ -67,22 +53,6 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
-        private void BtnPrevious_Click(object sender, EventArgs e)
-        {
-            if (!PaymentIDs.Any() || PaymentID <= PaymentIDs.Min())
-                return;
-
-            DecrementPaymentId();
-        }
-
-        private void BtnNext_Click(object sender, EventArgs e)
-        {
-            if (!PaymentIDs.Any() || PaymentID >= PaymentIDs.Max())
-                return;
-
-            IncrementPaymentId();
-        }
-
         private void FillTextFields()
         {
             if (PaymentID <= 0 || !PaymentIDs.Contains(PaymentID))
@@ -91,8 +61,8 @@ namespace GaussSchoolManagement.Forms
             var data = DatabaseModel.Instance.Pagesas.First(x => x.PageseId == PaymentID);
             lblPaymentForm.Text = data.FormaPageses;
             lblDate.Text = data.Data.ToString();
-            lblDescription.Text = data.Sherbimet.Pershkrimi;
-            lblTotalPaid.Text = data.ShumaPaguar.ToString();            
+            lblDescription.Text = data.PershkrimiPageses;
+            lblTotalPaid.Text = data.ShumaPaguar.ToString();
         }
 
         public void UpdatePaymentIds()
@@ -121,6 +91,7 @@ namespace GaussSchoolManagement.Forms
                     IncrementPaymentId();
                 else
                     DecrementPaymentId();
+                ResetGridData();
             }
             catch
             {
@@ -145,10 +116,93 @@ namespace GaussSchoolManagement.Forms
                 previousId--;
             PaymentID = previousId;
         }
+       
+        private List<PaymentsListData> _gridData;
+        private List<PaymentsListData> GridData => _gridData ?? (_gridData =
+            DatabaseModel.Instance.Pagesas
+                .Select(x =>
+                new
+                {
+                    Id = x.PageseId,
+                    PaymentForm = x.FormaPageses,
+                    PaymentDescription = x.PershkrimiPageses,
+                    Date = x.Data,
+                    TotalPaid = x.ShumaPaguar,
+                    Discount = x.Zbritje
+                }).AsEnumerable().Select(z =>
 
-        private void PaymentOverview_Load(object sender, EventArgs e)
+                 new PaymentsListData
+                 {
+                     Id = z.Id,
+                     PaymentForm = z.PaymentForm,
+                     PaymentDescription = z.PaymentDescription,
+                     Date = z.Date,
+                     TotalPaid = z.TotalPaid,
+                     Discount = z.Discount
+                 }).ToList());
+
+        private void PopulateDataGrid(IEnumerable<PaymentsListData> data = null)
         {
+            dtgPayments.DataSource = new BindingSource { DataSource = data ?? GridData };
+            foreach (DataGridViewColumn column in dtgPayments.Columns)
+            {
+                if (column.Name == "Id")
+                    column.Visible = false;
+            }
+        }
 
+        public void ResetGridData()
+        {
+            _gridData = null;
+            PopulateDataGrid();
+        }
+
+        private void OnInputChanged(object sender, EventArgs e)
+        {
+            var selectedGridData = GridData as IEnumerable<PaymentsListData>;
+
+            if (txtPaymentForm.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.PaymentForm.ToLower().StartsWith(txtPaymentForm.Text.ToLower()));
+
+            if (txtServiceDescription.Text.Any())
+               selectedGridData = selectedGridData.Where(x =>  x.PaymentDescription.ToLower().StartsWith(txtServiceDescription.Text.ToLower()));
+
+            if (txtTotalPaid.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.TotalPaid.ToString().ToLower().Contains(txtTotalPaid.Text.ToLower()));
+
+            if (txtDiscount.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Discount.ToString().ToLower().StartsWith(txtDiscount.Text.ToLower()));
+
+            if (txtDate.Text.Any())
+                selectedGridData = selectedGridData.Where(x => x.Date.HasValue
+                && x.Date.Value.Year.ToString().ToLower().Contains(txtDate.Text.ToLower()));
+
+            PopulateDataGrid(selectedGridData);
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            txtDate.Text = "";
+            txtDiscount.Text = "";
+            txtPaymentForm.Text = "";
+            txtServiceDescription.Text = "";
+            txtTotalPaid.Text = "";
+        }
+
+        public class PaymentsListData
+        {
+            public int Id { get; set; }
+            public string PaymentForm { get; set; }
+            public string PaymentDescription { get; set; }
+            public DateTime? Date { get; set; }
+            public decimal? TotalPaid { get; set; }
+            public decimal? Discount { get; set; }
+        }
+
+        private void DtgPayments_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtgPayments.CurrentRow.Cells[0].Value != null)
+                PaymentID = (int)dtgPayments.CurrentRow.Cells[0].Value;
         }
     }
 }

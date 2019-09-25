@@ -25,7 +25,7 @@ namespace GaussSchoolManagement.Forms
                     Id = x.PageseId,
                     PaymentForm = x.FormaPageses,
                     Date = x.Data,
-                    ServiceDescription = x.Sherbimet.Pershkrimi,
+                    PaymentDescription = x.PershkrimiPageses,
                     TotalPaid = x.ShumaPaguar,
                     Discount = x.Zbritje
                 }).AsEnumerable().Select(z =>
@@ -35,7 +35,7 @@ namespace GaussSchoolManagement.Forms
                      Id = z.Id,
                      PaymentForm = z.PaymentForm,
                      Date = z.Date,
-                     ServiceDescription = z.ServiceDescription,
+                     PaymentDescription = z.PaymentDescription,
                      TotalPaid = z.TotalPaid,
                      Discount = z.Discount
                  }).ToList());
@@ -50,18 +50,6 @@ namespace GaussSchoolManagement.Forms
         {
             InitializeComponent();
             PopulateDataGrid();
-        }
-
-        private void BtnSavePayments_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DatabaseModel.Instance.SaveChanges();
-            }
-            catch
-            {
-                MessageBox.Show("There was an error");
-            }
         }
 
         private void BtnSelectPayment_Click(object sender, EventArgs e)
@@ -104,7 +92,7 @@ namespace GaussSchoolManagement.Forms
                 selectedGridData = selectedGridData.Where(x => x.PaymentForm.ToLower().StartsWith(txtPaymentForm.Text.ToLower()));
 
             if (txtServiceDescription.Text.Any())
-                selectedGridData = selectedGridData.Where(x => x.ServiceDescription.ToLower().StartsWith(txtServiceDescription.Text.ToLower()));
+                selectedGridData = selectedGridData.Where(x => x.PaymentDescription.ToLower().StartsWith(txtServiceDescription.Text.ToLower()));
 
             if (txtTotalPaid.Text.Any())
                 selectedGridData = selectedGridData.Where(x => x.TotalPaid.ToString().ToLower().Contains(txtTotalPaid.Text.ToLower()));
@@ -143,7 +131,7 @@ namespace GaussSchoolManagement.Forms
             public int Id { get; set; }
             public string PaymentForm { get; set; }
             public DateTime? Date { get; set; }
-            public string ServiceDescription { get; set; }
+            public string PaymentDescription { get; set; }
             public decimal? TotalPaid{ get; set; }
             public decimal? Discount { get; set; }
         }

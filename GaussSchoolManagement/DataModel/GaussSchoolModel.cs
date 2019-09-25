@@ -19,7 +19,6 @@ namespace GaussSchoolManagement.DataModel
         public virtual DbSet<Pagesa> Pagesas { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
         public virtual DbSet<Prinder> Prinders { get; set; }
-        public virtual DbSet<Sherbimet> Sherbimets { get; set; }
         public virtual DbSet<Shkolla> Shkollas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
@@ -60,10 +59,6 @@ namespace GaussSchoolManagement.DataModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<Pagesa>()
-                .Property(e => e.SasiaSherbimeve)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<Pagesa>()
                 .Property(e => e.ShumaPaguar)
                 .HasPrecision(18, 0);
 
@@ -90,14 +85,6 @@ namespace GaussSchoolManagement.DataModel
             modelBuilder.Entity<Persona>()
                 .Property(e => e.Adresa)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Sherbimet>()
-                .Property(e => e.Cmimi)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<Sherbimet>()
-                .Property(e => e.Pershkrimi)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Shkolla>()
                 .Property(e => e.ShkollaEmri)

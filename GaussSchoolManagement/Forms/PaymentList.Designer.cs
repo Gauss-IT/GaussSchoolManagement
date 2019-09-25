@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgPaymentsDataGrid = new System.Windows.Forms.DataGridView();
-            this.btnSavePayments = new System.Windows.Forms.Button();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.txtTotalPaid = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,20 +56,11 @@
             this.dtgPaymentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPaymentsDataGrid.Location = new System.Drawing.Point(52, 99);
             this.dtgPaymentsDataGrid.Name = "dtgPaymentsDataGrid";
+            this.dtgPaymentsDataGrid.RowHeadersWidth = 51;
             this.dtgPaymentsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgPaymentsDataGrid.Size = new System.Drawing.Size(563, 150);
             this.dtgPaymentsDataGrid.TabIndex = 0;
             this.dtgPaymentsDataGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DtgPaymentsDataGrid_CellMouseDoubleClick);
-            // 
-            // btnSavePayments
-            // 
-            this.btnSavePayments.Location = new System.Drawing.Point(301, 272);
-            this.btnSavePayments.Name = "btnSavePayments";
-            this.btnSavePayments.Size = new System.Drawing.Size(75, 23);
-            this.btnSavePayments.TabIndex = 1;
-            this.btnSavePayments.Text = "Save";
-            this.btnSavePayments.UseVisualStyleBackColor = true;
-            this.btnSavePayments.Click += new System.EventHandler(this.BtnSavePayments_Click);
             // 
             // txtDiscount
             // 
@@ -93,7 +83,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(475, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.Size = new System.Drawing.Size(55, 15);
             this.label6.TabIndex = 9;
             this.label6.Text = "Discount";
             // 
@@ -110,7 +100,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(369, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.Size = new System.Drawing.Size(61, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Total paid";
             // 
@@ -127,7 +117,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(263, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.Size = new System.Drawing.Size(110, 15);
             this.label4.TabIndex = 11;
             this.label4.Text = "Service description";
             // 
@@ -144,7 +134,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(160, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(33, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Date";
             // 
@@ -153,7 +143,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(52, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(87, 15);
             this.label2.TabIndex = 13;
             this.label2.Text = "Payment Form";
             // 
@@ -202,7 +192,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSelectPayment);
-            this.Controls.Add(this.btnSavePayments);
             this.Controls.Add(this.dtgPaymentsDataGrid);
             this.Name = "PaymentList";
             this.Text = "PaymentList";
@@ -217,7 +206,6 @@
         #endregion
         private System.Windows.Forms.BindingSource pagesaBindingSource;
         public System.Windows.Forms.DataGridView dtgPaymentsDataGrid;
-        private System.Windows.Forms.Button btnSavePayments;
         private System.Windows.Forms.BindingSource nxeneBindingSource;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox txtTotalPaid;

@@ -32,7 +32,6 @@
             this.btnEditPeople = new System.Windows.Forms.Button();
             this.btnEditCourse = new System.Windows.Forms.Button();
             this.btnEditPayments = new System.Windows.Forms.Button();
-            this.btnEditServices = new System.Windows.Forms.Button();
             this.btnEditParents = new System.Windows.Forms.Button();
             this.btnEditStudents = new System.Windows.Forms.Button();
             this.btnEditInstructors = new System.Windows.Forms.Button();
@@ -83,16 +82,6 @@
             this.btnEditPayments.Text = "Payments";
             this.btnEditPayments.UseVisualStyleBackColor = true;
             this.btnEditPayments.Click += new System.EventHandler(this.BtnEditPayments_Click);
-            // 
-            // btnEditServices
-            // 
-            this.btnEditServices.Location = new System.Drawing.Point(168, 92);
-            this.btnEditServices.Name = "btnEditServices";
-            this.btnEditServices.Size = new System.Drawing.Size(114, 65);
-            this.btnEditServices.TabIndex = 5;
-            this.btnEditServices.Text = "Services";
-            this.btnEditServices.UseVisualStyleBackColor = true;
-            this.btnEditServices.Click += new System.EventHandler(this.BtnEditServices_Click);
             // 
             // btnEditParents
             // 
@@ -196,7 +185,6 @@
             this.Controls.Add(this.btnStudentOverview);
             this.Controls.Add(this.btnEditStudents);
             this.Controls.Add(this.btnEditParents);
-            this.Controls.Add(this.btnEditServices);
             this.Controls.Add(this.btnEditPayments);
             this.Controls.Add(this.btnCourseOverview);
             this.Controls.Add(this.btnEditCourse);
@@ -214,7 +202,6 @@
         private System.Windows.Forms.Button btnEditPeople;
         private System.Windows.Forms.Button btnEditCourse;
         private System.Windows.Forms.Button btnEditPayments;
-        private System.Windows.Forms.Button btnEditServices;
         private System.Windows.Forms.Button btnEditParents;
         private System.Windows.Forms.Button btnEditStudents;
         private System.Windows.Forms.Button btnEditInstructors;

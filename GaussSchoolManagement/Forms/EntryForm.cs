@@ -46,16 +46,6 @@ namespace GaussSchoolManagement.Forms
             form.Show();
         }
 
-        private void BtnEditServices_Click(object sender, EventArgs e)
-        {
-            var form = new ServicesList();
-            var sherbimet = DatabaseModel.Instance.Sherbimets;
-            sherbimet.Load();
-            form.dtgServicesDataGrid.DataSource = sherbimet.Local.ToBindingList();
-            form.MdiParent = this.MdiParent;
-            form.Show();
-        }
-
         private void BtnEditParents_Click(object sender, EventArgs e)
         {
             var form = new ParentsList();
