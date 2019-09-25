@@ -291,5 +291,5 @@ namespace GaussSchoolManagement.Forms
                     column.Visible = false;
             }
         }
-    }
+	}
 }
