@@ -89,28 +89,10 @@ namespace GaussSchoolManagement.Forms
                 return;
 
             var data = DatabaseModel.Instance.Pagesas.First(x => x.PageseId == PaymentID);
-            lblId.Text = PaymentID.ToString();
             lblPaymentForm.Text = data.FormaPageses;
             lblDate.Text = data.Data.ToString();
             lblDescription.Text = data.Sherbimet.Pershkrimi;
-            lblTotalPaid.Text = data.ShumaPaguar.ToString();
-            
-            UpdateButtonEnabled();
-        }
-
-        private void UpdateButtonEnabled()
-        {
-            if (PaymentID == PaymentIDs.Max())
-                btnNext.Enabled = false;
-
-            if (PaymentID > PaymentIDs.Min())
-                btnPrevious.Enabled = true;
-
-            if (PaymentID == PaymentIDs.Min())
-                btnPrevious.Enabled = false;
-
-            if (PaymentID < PaymentIDs.Max())
-                btnNext.Enabled = true;
+            lblTotalPaid.Text = data.ShumaPaguar.ToString();            
         }
 
         public void UpdatePaymentIds()
@@ -139,7 +121,6 @@ namespace GaussSchoolManagement.Forms
                     IncrementPaymentId();
                 else
                     DecrementPaymentId();
-                UpdateButtonEnabled();
             }
             catch
             {
